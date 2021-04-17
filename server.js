@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
   res.send("Server is working Fine");
 });
 
+//Database connection
+const db = require("./database/db");
+db.connnectToDb();
+
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log("Server started at: " + PORT);
