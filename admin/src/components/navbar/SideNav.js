@@ -4,7 +4,7 @@ function SideNav() {
   useEffect(() => {
     const M = window.M;
     const elems = document.querySelectorAll(".sidenav");
-    const instances = M.Sidenav.init(elems, { draggable: false });
+    const instances = M.Sidenav.init(elems, {});
   }, []);
   return (
     <div>

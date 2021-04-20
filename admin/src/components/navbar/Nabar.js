@@ -5,15 +5,15 @@ function Nabar() {
   return (
     <div>
       <div className="navbar-fixed">
-        <nav>
+        <nav className="green">
+          <a
+            href="#"
+            data-target="slide-out"
+            className="sidenav-trigger show-on-large"
+          >
+            <i className="material-icons">menu</i>
+          </a>
           <div className="nav-wrapper container">
-            <a
-              href="#"
-              data-target="slide-out"
-              className="sidenav-trigger show-on-large"
-            >
-              <i className="material-icons">menu</i>
-            </a>
             <a href="#" className="brand-logo">
               Admin-HerboFit
             </a>
