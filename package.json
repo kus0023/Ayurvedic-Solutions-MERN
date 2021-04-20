@@ -8,8 +8,12 @@
     "start-dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "admin-build": "cd admin && npm install && npm run build",
-    "heroku-postbuild": "npm install && npm run admin-build",
+    "client-build": "cd client && npm install && npm run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run admin-build && npm run client-build",
     "heroku-logs": "heroku logs --app=ayurvedic-solution --tail"
+  },
+  "engines": {
+    "node": "12.18.3"
   },
   "author": "Kumar Utsav Singh and Shweta Singh",
   "license": "ISC",
