@@ -1,14 +1,16 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Nabar from "./components/navbar/Nabar";
 import Auth from "./components/authentication/Auth";
+import RedirectedToAdmin from "./components/helper/RedirectedToAdmin";
+import Login from "./components/login/Login";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nabar />
         <Switch>
-          <Route path="/admin/" exact component={Auth} />
+          <Route path="/admin" exact component={Auth} />
+          <Route path="/admin/login" component={Login} />
+          <Route path="/" exact component={RedirectedToAdmin} />
         </Switch>
       </BrowserRouter>
     </div>

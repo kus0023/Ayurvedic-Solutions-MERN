@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SideNav from "./SideNav";
 
-function Nabar() {
+function Navbar() {
   return (
     <div>
       <div className="navbar-fixed">
@@ -19,7 +20,7 @@ function Nabar() {
             </a>
             <ul id="nav-mobile" className="right ">
               <li>
-                <a href="#">Logout</a>
+                <Link to="/admin/login">Logout</Link>
               </li>
             </ul>
           </div>
@@ -30,4 +31,4 @@ function Nabar() {
   );
 }
 
-export default Nabar;
+export default Navbar;
