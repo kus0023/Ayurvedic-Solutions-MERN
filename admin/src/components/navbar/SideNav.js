@@ -6,7 +6,14 @@ function SideNav() {
     const M = window.M;
     const elems = document.querySelectorAll(".sidenav");
     const instances = M.Sidenav.init(elems, {});
+
+    return () => {
+      // const elem = document.querySelectorAll(".sidenav")[0];
+      // var instance = M.Sidenav.getInstance(elem);
+      // instance.destroy();
+    };
   }, []);
+
   return (
     <div>
       <ul id="slide-out" className="sidenav">
