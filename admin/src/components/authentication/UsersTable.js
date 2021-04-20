@@ -7,27 +7,32 @@ class UsersTable extends Component {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th>UID</th>
+              <th>User Name</th>
+              <th>Email</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>Alvin</td>
+              <td>1</td>
               <td>Eclair</td>
-              <td>$0.87</td>
+              <td>Eclair@gmail.com</td>
             </tr>
             <tr>
-              <td>Alan</td>
+              <td>2</td>
               <td>Jellybean</td>
-              <td>$3.76</td>
+              <td>Jellybean@gmail.com</td>
             </tr>
             <tr>
+              <td>3</td>
               <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
+              <td>Jonathan@gmail.com</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Marry</td>
+              <td>marry@gmail.com</td>
             </tr>
           </tbody>
         </table>
