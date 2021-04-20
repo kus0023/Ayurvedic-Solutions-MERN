@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function SideNav() {
   useEffect(() => {
@@ -30,14 +31,14 @@ function SideNav() {
           </div>
         </li>
         <li>
-          <a href="#!">
+          <Link to="/admin">
             <i className="material-icons">lock</i>Athentication
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#!">
+          <Link to="/admin/products">
             <i className="material-icons">category</i>Products
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
