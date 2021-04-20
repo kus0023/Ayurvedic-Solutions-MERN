@@ -19,7 +19,10 @@ export default class Auth extends Component {
       <>
         <Navbar />
 
-        <div className="container" style={{ marginTop: 40 }}>
+        <div
+          className="container"
+          // style={{ marginTop: 40, border: "1px grey solid" }}
+        >
           <ul id="tabs-swipe-demo" className="tabs z-depth-1">
             <li className="tab col s3 ">
               <a href="#test-swipe-1" className="active">
