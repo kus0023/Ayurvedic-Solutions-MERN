@@ -8,6 +8,7 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 
+//Heroku environment settings
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("/", (req, res) => {
@@ -20,17 +21,14 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.all("/api", (req, res) => {
-  res.status(200).json({
-    message: "API working fine.",
-  });
-});
-app.use("/api/products", require("./routes/public/Product.route.js"));
+//All route is in one folder related to api
+app.use("/api", require("./routes"));
 
 //Database connection
 const db = require("./database/db");
 db.connnectToDb();
 
+//listener for the app
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log("Server started at: " + PORT);
