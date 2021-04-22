@@ -15,8 +15,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.methods = {
-  checkPassword: function (password) {
-    return bcryptjs.compare(password, this.password);
+  validPassword: function (password) {
+    return bcryptjs.compareSync(password, this.password);
   },
 
   hashPassword: function (password) {

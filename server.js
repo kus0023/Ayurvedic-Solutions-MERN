@@ -22,14 +22,15 @@ app.use(
   session({
     secret: process.env.SESSION_SECRETE,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create(mongoOpt),
     cookie: { secure: true },
   })
 );
+require("./config/Passport.config");
 app.use(passport.initialize());
 app.use(passport.session());
-require("./config/Passport.config");
+
 //============================================================
 
 //-----------------DATABASE-----------------------------
