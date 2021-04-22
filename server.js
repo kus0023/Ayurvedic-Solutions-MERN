@@ -9,30 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-//=====================passport and session================
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
-const passport = require("passport");
-const mongoOpt = {
-  mongoUrl: process.env.DATABASE_MONGO_URL,
-  ttl: 14 * 24 * 60 * 60, // = 14 days. Default
-};
-//middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRETE,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create(mongoOpt),
-    cookie: { secure: true },
-  })
-);
-require("./config/Passport.config");
-app.use(passport.initialize());
-app.use(passport.session());
-
-//============================================================
-
 //-----------------DATABASE-----------------------------
 //Database connection
 require("./database/db");

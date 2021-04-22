@@ -12,6 +12,7 @@ const UserSchema = new mongoose.Schema({
     default: null,
     ref: "user",
   },
+  createdAt: { type: Date, default: Date.now },
 });
 
 UserSchema.methods = {
@@ -21,6 +22,10 @@ UserSchema.methods = {
 
   hashPassword: function (password) {
     return bcryptjs.hashSync(password, 10);
+  },
+
+  isValidAdmin: function () {
+    return this.isAdmin;
   },
 };
 

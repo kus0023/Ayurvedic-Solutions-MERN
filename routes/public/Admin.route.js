@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const jwt = require("jsonwebtoken");
-const passport = require("passport");
+
+const { createToken } = require("../../helpers/Token.helper");
 const User = require("../../models/User");
 
 router.all("/", (req, res) => res.sendStatus(200));
@@ -8,36 +8,42 @@ router.all("/", (req, res) => res.sendStatus(200));
 /*
 Takes email and password of admin
 */
-router.post("/login", async (req, res) => {
+router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
   if (email === undefined || password === undefined) {
-    return res.sendStatus(400);
+    return res.status(400).json({
+      message: "Provide email and password",
+    });
   }
 
-  await passport.authenticate("local", async (err, user) => {
-    if (err) {
-      console.log(err);
-      return res.json({ message: err.message });
+  User.findOne({ email }).then((user) => {
+    if (!user) {
+      return res.status(404).json({
+        message: "Email is not valid",
+      });
     }
 
-    await req.logIn(user, function (err) {
-      if (err) {
-        return res.json({ message: err.message });
-      }
-
-      return res.status(200).json({
-        message: "Login Success",
+    if (!user.validPassword(password)) {
+      return res.status(403).json({
+        message: "Password is incorrect.",
       });
+    }
+
+    if (!user.isValidAdmin(password)) {
+      return res.status(403).json({
+        message: "Not valid user",
+      });
+    }
+
+    const token = createToken({ userId: user._id });
+
+    res.status(202).json({
+      token,
+      user,
     });
-  })(req, res);
+  });
 });
 
-// router.post("/reg", async (req, res) => {
-//   const user = req.body;
-//   const createdUser = await User.create(user);
-//   res.status(200).json({
-//     user: createdUser,
-//   });
-// });
+router.use("/", require("../private/Admin.route"));
 
 module.exports = router;

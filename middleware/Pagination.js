@@ -1,6 +1,6 @@
 // const mongoose = require("mongoose");
 
-function Pagination(model, sort) {
+function Pagination(model, find) {
   return async (req, res, next) => {
     const page = Number.parseInt(req.query.page || "1") || 1;
     const limit = Number.parseInt(req.query.limit || "10");
@@ -31,11 +31,7 @@ function Pagination(model, sort) {
     }
 
     try {
-      const results = await model
-        .find({})
-        .skip(startIndex)
-        .limit(limit)
-        .sort(sort);
+      const results = await model.find(find).skip(startIndex).limit(limit);
       req.results = results;
       next();
     } catch (error) {
