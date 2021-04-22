@@ -7,6 +7,34 @@ const path = require("path");
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+//=====================passport and session================
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const passport = require("passport");
+const mongoOpt = {
+  mongoUrl: process.env.DATABASE_MONGO_URL,
+  ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+};
+//middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRETE,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create(mongoOpt),
+    cookie: { secure: true },
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/Passport.config");
+//============================================================
+
+//-----------------DATABASE-----------------------------
+//Database connection
+require("./database/db");
 
 //Heroku environment settings
 if (process.env.NODE_ENV === "production") {
@@ -23,10 +51,6 @@ if (process.env.NODE_ENV === "production") {
 
 //All route is in one folder related to api
 app.use("/api", require("./routes"));
-
-//Database connection
-const db = require("./database/db");
-db.connnectToDb();
 
 //listener for the app
 const PORT = process.env.PORT || 8000;
