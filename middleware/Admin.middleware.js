@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const Session = require("../models/Session");
 const User = require("../models/User");
 
 module.exports = {
@@ -25,7 +26,9 @@ module.exports = {
           next();
         } catch (e) {
           console.log(e);
-          return res.status(500).send();
+          return res.status(500).json({
+            messege: "Internal error",
+          });
         }
       });
     };

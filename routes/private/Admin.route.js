@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { verifyAdminToken } = require("../../middleware/Admin.middleware");
 const Pagination = require("../../middleware/Pagination");
 const User = require("../../models/User");
+const { verifySession } = require("../../middleware/Session.middleware");
 
 router.post("/register", verifyAdminToken(), async (req, res) => {
   const { firstName, lastName, email, password, isAdmin } = req.body;
@@ -42,6 +43,7 @@ router.post("/register", verifyAdminToken(), async (req, res) => {
 router.get(
   "/users",
   verifyAdminToken(),
+  verifySession(),
   Pagination(User, {
     isAdmin: false,
   }),
@@ -56,6 +58,7 @@ router.get(
 router.get(
   "/admins",
   verifyAdminToken(),
+  verifySession(),
   Pagination(User, {
     isAdmin: true,
   }),
