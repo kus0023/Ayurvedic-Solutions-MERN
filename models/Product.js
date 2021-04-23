@@ -8,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
     extra: [String],
   },
   uses: [String],
-  deseasesCure: [String],
+  diseasesCure: [String],
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
 });
