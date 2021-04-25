@@ -4,6 +4,21 @@ const Pagination = require("../../middleware/Pagination");
 const User = require("../../models/User");
 const { verifySession } = require("../../middleware/Session.middleware");
 
+/**
+ * @route api/admin/register
+ *
+ * @method POST
+ *
+ * @body
+ * firstName, lastName, email, password, isAdmin
+ *
+ * @header
+ * Autherization = Bearer <TOKEN>
+ *
+ *
+ * @description
+ * Only admin can add new users manually
+ */
 router.post("/register", verifyAdminToken(), async (req, res) => {
   const { firstName, lastName, email, password, isAdmin } = req.body;
   const createdBy = req.admin.createdBy;
@@ -41,6 +56,16 @@ router.post("/register", verifyAdminToken(), async (req, res) => {
   }
 });
 
+/**
+ * @route api/admin/users?page=page&limit=limit
+ *
+ * @param page and limit
+ *
+ * @method GET
+ *
+ * @description
+ * Give list of users
+ */
 router.get(
   "/users",
   verifyAdminToken(),
@@ -56,6 +81,16 @@ router.get(
   }
 );
 
+/**
+ * @route api/admin/admins?page=page&limit=limit
+ *
+ * @param page and limit
+ *
+ * @method GET
+ *
+ * @description
+ * Give list of admins
+ */
 router.get(
   "/admins",
   verifyAdminToken(),

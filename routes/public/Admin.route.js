@@ -6,9 +6,21 @@ const User = require("../../models/User");
 
 router.all("/", (req, res) => res.sendStatus(200));
 
-/*
-Takes email and password of admin
-*/
+/**
+ * @route api/admin/login
+ *
+ * @method POST
+ *
+ * @body
+ * email, password
+ *
+ * @description
+ * Login for the users
+ * return a access token to be used for session
+ * put the token in header
+ *
+ * Autherization=Bearer <TOKEN>
+ */
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
   if (email === undefined || password === undefined) {
