@@ -4,6 +4,7 @@ import Navbar from "../navbar/Navbar";
 import Product from "./Product";
 
 class ProductList extends Component {
+  
   render() {
     return (
       <div>
