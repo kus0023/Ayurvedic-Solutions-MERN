@@ -29,6 +29,7 @@ router.post("/register", verifyAdminToken(), async (req, res) => {
       email,
       password,
       isAdmin,
+      createdBy,
     });
 
     res.status(201).json({
