@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //-----------------DATABASE-----------------------------
-//Database connection
+// Database connection
 require("./database/db");
 
 //Heroku environment settings
@@ -29,8 +29,4 @@ if (process.env.NODE_ENV === "production") {
 //All route is in one folder related to api
 app.use("/api", require("./routes"));
 
-//listener for the app
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log("Server started at: " + PORT);
-});
+module.exports = app;
