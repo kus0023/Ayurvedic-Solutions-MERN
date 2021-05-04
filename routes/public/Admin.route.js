@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const logInUser = require("../../helpers/Login.helper");
 const { verifyAdminToken } = require("../../middleware/Admin.middleware");
+const { verifySession } = require("../../middleware/Session.middleware");
 
 router.all("/", (req, res) => res.sendStatus(200));
 
@@ -21,6 +22,11 @@ router.all("/", (req, res) => res.sendStatus(200));
  */
 router.post("/login", logInUser(true));
 
-router.use("/", verifyAdminToken(), require("../private/Admin.route"));
+router.use(
+  "/",
+  verifySession(),
+  verifyAdminToken(),
+  require("../private/Admin.route")
+);
 
 module.exports = router;

@@ -11,7 +11,6 @@ module.exports = {
    * User's token is verified and if correct then
    * all the current user information is put into req.user
    *
-   *
    */
   verifyUserToken: () => {
     return (req, res, next) => {

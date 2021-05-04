@@ -1,8 +1,7 @@
 const router = require("express").Router();
-const { verifyAdminToken } = require("../../middleware/Admin.middleware");
 const Pagination = require("../../middleware/Pagination");
+const Session = require("../../models/Session");
 const User = require("../../models/User");
-const { verifySession } = require("../../middleware/Session.middleware");
 
 /**
  * @route api/admin/register
@@ -68,7 +67,6 @@ router.post("/register", async (req, res) => {
  */
 router.get(
   "/users",
-  verifySession(),
   Pagination(User, {
     isAdmin: false,
   }),
@@ -92,7 +90,6 @@ router.get(
  */
 router.get(
   "/admins",
-  verifySession(),
   Pagination(User, {
     isAdmin: true,
   }),
@@ -103,5 +100,17 @@ router.get(
     });
   }
 );
+
+router.get("/logout", (req, res) => {
+  const sessionId = req.session.sessionId;
+  Session.findByIdAndDelete(sessionId)
+    .then(() => {
+      return res.status(200).json({ message: "successfuly logout" });
+    })
+    .catch((e) => {
+      console.log(e);
+      return res.sendStatus(500);
+    });
+});
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const logInUser = require("../../helpers/Login.helper");
+const { verifySession } = require("../../middleware/Session.middleware");
 const User = require("../../models/User");
 
 const router = require("express").Router();
@@ -54,6 +55,6 @@ router.get("/register", async (req, res) => {
 /**
  * All private Routes
  */
-router.use("/", require("../private/User.route"));
+router.use("/", verifySession(), require("../private/User.route"));
 
 module.exports = router;

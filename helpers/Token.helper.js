@@ -10,7 +10,7 @@ module.exports = {
     new Promise((resolve, reject) => {
       jwt.verify(token, process.env.JWT_SECRETE, (err, payload) => {
         if (err) {
-          reject({ error: error.message, info: "Token rejected. Not valid." });
+          reject({ error: error, message: error.message });
         }
         resolve(payload);
       });
