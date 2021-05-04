@@ -22,6 +22,12 @@ router.use("/admin", require("./public/Admin.route"));
 
 /**
  * @description
+ * All the users related authentication routes
+ */
+router.use("/user", require("./public/User.route"));
+
+/**
+ * @description
  * Product routes which does following
  * - @protected CRUD operation on product (Only for Admins)
  * - Get All Products (With pagination feature)

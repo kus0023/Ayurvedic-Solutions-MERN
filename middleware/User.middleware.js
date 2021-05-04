@@ -5,7 +5,15 @@ const {
 const User = require("../models/User");
 
 module.exports = {
-  verifyAdminToken: () => {
+  /**
+   *
+   * @description
+   * User's token is verified and if correct then
+   * all the current user information is put into req.user
+   *
+   *
+   */
+  verifyUserToken: () => {
     return (req, res, next) => {
       const token = extractTokenFromHeader(req);
       if (!token) {
@@ -13,15 +21,10 @@ module.exports = {
           message: "Token is not present in header.",
         });
       }
-
       verifyToken(token)
         .then(async (payload) => {
           try {
-            console.log(payload);
             const user = await User.findById(payload.user);
-            if (!user.isValidAdmin()) {
-              return res.status(401).json({ message: "You are not admin." });
-            }
 
             req.session = { user, sessionId: payload.session };
             next();

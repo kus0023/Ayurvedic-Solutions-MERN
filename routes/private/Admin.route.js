@@ -19,9 +19,9 @@ const { verifySession } = require("../../middleware/Session.middleware");
  * @description
  * Only admin can add new users manually
  */
-router.post("/register", verifyAdminToken(), async (req, res) => {
+router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password, isAdmin } = req.body;
-  const createdBy = req.admin.createdBy;
+  const createdBy = req.session.user._id;
 
   if (!(firstName && lastName && email && password)) {
     return res.status(400).json({
@@ -68,7 +68,6 @@ router.post("/register", verifyAdminToken(), async (req, res) => {
  */
 router.get(
   "/users",
-  verifyAdminToken(),
   verifySession(),
   Pagination(User, {
     isAdmin: false,
@@ -93,7 +92,6 @@ router.get(
  */
 router.get(
   "/admins",
-  verifyAdminToken(),
   verifySession(),
   Pagination(User, {
     isAdmin: true,

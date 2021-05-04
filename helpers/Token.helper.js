@@ -5,4 +5,24 @@ module.exports = {
     jwt.sign(payload, process.env.JWT_SECRETE, {
       expiresIn: "1d",
     }),
+
+  verifyToken: (token) =>
+    new Promise((resolve, reject) => {
+      jwt.verify(token, process.env.JWT_SECRETE, (err, payload) => {
+        if (err) {
+          reject({ error: error.message, info: "Token rejected. Not valid." });
+        }
+        resolve(payload);
+      });
+    }),
+
+  extractTokenFromHeader: (req) => {
+    const bearer = req.header("Authorization");
+    if (!bearer) {
+      return undefined;
+    }
+    const token = bearer.split(" ")[1];
+
+    return token;
+  },
 };

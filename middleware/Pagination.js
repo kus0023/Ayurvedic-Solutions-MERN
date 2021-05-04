@@ -1,6 +1,24 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-function Pagination(model, find) {
+/**
+ *
+ * @param {mongoose.Model} model
+ * @param {object} filter - where clause
+ * @param {object} projection - it can be null
+ * @param {object} options - example {sort{date:-1}}
+ * @param {string} path - populate
+ *
+ * @description
+ * it will populate req.pagination and req.results
+ *
+ */
+function Pagination(
+  model,
+  filter = {},
+  projection = {},
+  options = {},
+  path = ""
+) {
   return async (req, res, next) => {
     const page = Number.parseInt(req.query.page || "1") || 1;
     const limit = Number.parseInt(req.query.limit || "10");
@@ -31,7 +49,11 @@ function Pagination(model, find) {
     }
 
     try {
-      const results = await model.find(find).skip(startIndex).limit(limit);
+      const results = await model
+        .find(filter, projection, options)
+        .populate(path)
+        .skip(startIndex)
+        .limit(limit);
       req.results = results;
       next();
     } catch (error) {

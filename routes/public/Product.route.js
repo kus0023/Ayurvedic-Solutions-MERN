@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Product = require("../../models/Product");
 const Pagination = require("../../middleware/Pagination.js");
+const { Storage } = require("@google-cloud/storage");
+const path = require("path");
 
 /**
  * @route /api/products?page=page&limit=limit
@@ -20,7 +22,8 @@ router.get("/", Pagination(Product), (req, res) => {
  * @route /api/products/:id
  * Get only one product of matching productId = {id}
  */
-router.get("/:id", (req, res) => {
+router.get("/productId/:id", (req, res) => {
+  console.log("kyu");
   const productId = req.params.id;
   Product.findById(productId, null, null, (err, doc) => {
     if (err) {
