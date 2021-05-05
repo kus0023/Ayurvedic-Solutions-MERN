@@ -34,4 +34,12 @@ router.use("/user", require("./public/User.route"));
  */
 router.use("/products", require("./public/Product.route"));
 
+/**
+ * @description
+ * Disease routes which does following
+ * - @protected CRUD operation on Disease (Only for Admins)
+ * - Get All Disease
+ */
+router.use("/disease", require("./public/Disease.route"));
+
 module.exports = router;
