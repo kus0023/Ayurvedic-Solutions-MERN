@@ -10,7 +10,7 @@ const router = require("express").Router();
  * @description
  * Login the user and give the token and start the session
  */
-router.get("/login", logInUser(false));
+router.post("/login", logInUser(false));
 
 /**
  * @route POST api/user/register
@@ -18,7 +18,7 @@ router.get("/login", logInUser(false));
  * @description
  * Login the user and give the token and start the session
  */
-router.get("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
   if (!(firstName && lastName && email && password)) {

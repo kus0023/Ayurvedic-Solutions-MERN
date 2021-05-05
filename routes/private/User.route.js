@@ -1,3 +1,5 @@
+const Session = require("../../models/Session");
+
 const router = require("express").Router();
 
 /**
@@ -14,7 +16,7 @@ router.get("/logout", (req, res) => {
     })
     .catch((e) => {
       console.log(e);
-      return res.sendStatus(500);
+      return res.status(500).json({ error: e });
     });
 });
 

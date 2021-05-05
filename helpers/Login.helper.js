@@ -6,7 +6,7 @@ const { createToken } = require("./Token.helper");
  * @required
  * @param {boolean} forAdmin
  *
- * It create session and also geves user a token if credentials are correct
+ * It create session and also gives user a token if credentials are correct
  */
 const logInUser = (forAdmin) => {
   return (req, res) => {

@@ -71,9 +71,9 @@ router.get(
     isAdmin: false,
   }),
   (req, res) => {
-    res.json({
+    res.status(200).json({
       pagination: req.pagination,
-      results: req.results,
+      users: req.results,
     });
   }
 );
@@ -94,9 +94,9 @@ router.get(
     isAdmin: true,
   }),
   (req, res) => {
-    res.json({
+    res.status(200).json({
       pagination: req.pagination,
-      results: req.results,
+      admins: req.results,
     });
   }
 );

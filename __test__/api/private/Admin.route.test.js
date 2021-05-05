@@ -60,7 +60,30 @@ describe("Admin Registration routes", () => {
 });
 
 describe("getiing users and admin from admin route", () => {
-  it();
+  it("should give error if token not presesnt", async () => {
+    await request.get("/api/admin/users").expect(400);
+    await request.get("/api/admin/admins").expect(400);
+  });
+
+  it("should get users with pagination", async () => {
+    const res = await request
+      .get("/api/admin/users")
+      .set({ Authorization: token })
+      .expect(200);
+
+    expect(res.body.pagination).toBeTruthy();
+    expect(res.body.users).toBeTruthy();
+  });
+
+  it("should get admins with pagination", async () => {
+    const res = await request
+      .get("/api/admin/admins")
+      .set({ Authorization: token })
+      .expect(200);
+
+    expect(res.body.pagination).toBeTruthy();
+    expect(res.body.admins).toBeTruthy();
+  });
 });
 
 afterAll(async (done) => {
