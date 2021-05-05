@@ -41,7 +41,7 @@ const logInUser = (forAdmin) => {
       const session = await Session.findOne({ user: user._id });
 
       if (session) {
-        return res.status(200).json({
+        return res.status(202).json({
           message: "Already logged in.",
           token: session.token,
           user,

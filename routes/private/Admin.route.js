@@ -12,7 +12,7 @@ const User = require("../../models/User");
  * firstName, lastName, email, password, isAdmin
  *
  * @header
- * Autherization = Bearer <TOKEN>
+ * Authorization = Bearer <TOKEN>
  *
  *
  * @description
