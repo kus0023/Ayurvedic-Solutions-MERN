@@ -58,9 +58,13 @@ router.post("/update", async (req, res) => {
 
     const { name, causes, description, symptoms, remedies } = req.body;
 
-    const updated = await doc
-      .set({ name, causes, description, symptoms, remedies })
-      .save({ isNew: false });
+    name && doc.set({ name });
+    causes && doc.set({ causes });
+    description && doc.set({ description });
+    symptoms && doc.set({ symptoms });
+    remedies && doc.set({ remedies });
+
+    const updated = await doc.save({ isNew: false });
 
     return res.status(200).json({
       message: "Updated Successfully.",
