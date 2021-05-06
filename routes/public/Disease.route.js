@@ -5,9 +5,11 @@ const Disease = require("../../models/Disease");
 
 router.get("/get", async (req, res) => {
   const { id } = req.query;
+
+  const projection = { createdBy: 0, modifyBy: 0, modifyAt: 0 };
   try {
     if (id) {
-      const doc = await Disease.findById(id);
+      const doc = await Disease.findById(id, projection);
       if (!doc) {
         return res.status(400).json({
           message: "Id is not correct.",
@@ -18,7 +20,9 @@ router.get("/get", async (req, res) => {
         disease: doc,
       });
     }
-    const docs = await Disease.find({}, null, { sort: { createdAt: -1 } });
+    const docs = await Disease.find({}, projection, {
+      sort: { createdAt: -1 },
+    }).populate("remedies");
     return res.status(200).json({
       diseases: docs,
     });
