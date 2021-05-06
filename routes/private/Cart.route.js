@@ -1,24 +1,18 @@
 const Pagination = require("../../middleware/Pagination");
-const { verifyUserToken } = require("../../middleware/User.middleware");
 const Cart = require("../../models/Cart");
 const Product = require("../../models/Product");
 
 const router = require("express").Router();
 
-router.get(
-  "/get",
-  verifyUserToken(),
-  Pagination(Cart, {}, {}, {}, "product"),
-  (req, res) => {
-    console.log(req.pagination);
-    res.status(200).json({
-      pagination: req.pagination,
-      cart: req.results,
-    });
-  }
-);
+router.get("/get", Pagination(Cart, {}, {}, {}, "product"), (req, res) => {
+  console.log(req.pagination);
+  res.status(200).json({
+    pagination: req.pagination,
+    cart: req.results,
+  });
+});
 
-router.post("/add", verifyUserToken(), (req, res) => {
+router.post("/add", (req, res) => {
   const { productId } = req.body;
   const userId = req.session.user._id;
 
@@ -55,7 +49,7 @@ router.post("/add", verifyUserToken(), (req, res) => {
     });
 });
 
-router.delete("/delete", verifyUserToken(), (req, res) => {
+router.delete("/delete", (req, res) => {
   const { cartId } = req.body;
   Cart.deleteOne({ _id: cartId })
     .then((value) => {

@@ -42,4 +42,12 @@ router.use("/products", require("./public/Product.route"));
  */
 router.use("/disease", require("./public/Disease.route"));
 
+/**
+ * @description
+ * Cart routes
+ * - @protected CRUD operation on cart done by users
+ * - Get All product in cart
+ */
+router.use("/cart", require("./public/Cart.route"));
+
 module.exports = router;
