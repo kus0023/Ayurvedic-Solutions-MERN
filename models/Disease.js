@@ -12,12 +12,9 @@ const diseaseSchema = new mongoose.Schema({
     default: [],
   },
   createdAt: { type: Date, default: Date.now },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   modifyBy: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   modifyAt: { type: Date, default: Date.now },
-});
-
-diseaseSchema.pre("updateOne", (next) => {
-  this.modifyAt = Date.now();
 });
 
 const Disease = mongoose.model("disease", diseaseSchema);
