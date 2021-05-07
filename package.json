@@ -20,7 +20,7 @@
     "test": "jest --watchAll --force-exit --detectOpenHandles",
     "admin-build": "cd admin && npm install && npm run build",
     "client-build": "cd client && npm install && npm run build",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run admin-build && npm run client-build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run admin-build && NPM_CONFIG_PRODUCTION=false npm run client-build",
     "heroku-logs": "heroku logs --app=ayurvedic-solution --tail",
     "admin-build-only": "cd admin && npm run build",
     "client-build-only": "cd client && npm run build",
