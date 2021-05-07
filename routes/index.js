@@ -50,4 +50,6 @@ router.use("/disease", require("./public/Disease.route"));
  */
 router.use("/cart", require("./public/Cart.route"));
 
+router.use("/search", require("./public/Search.route"));
+
 module.exports = router;
