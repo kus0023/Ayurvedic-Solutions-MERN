@@ -1,0 +1,42 @@
+.title-appear {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.title-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 300ms ease-in;
+}
+.title-enter {
+  opacity: 0;
+}
+.title-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.title-exit {
+  opacity: 1;
+}
+.title-exit-active {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.form-appear {
+  opacity: 0;
+}
+.form-appear-active {
+  opacity: 1;
+  transition: all 600ms 300ms ease-in;
+}
+
+.link-appear {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.link-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 300ms 400ms ease-in;
+}
