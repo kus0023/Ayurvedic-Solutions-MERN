@@ -8,19 +8,50 @@ function Register() {
   };
 
   return (
-    <div className="login">
-      <div className="container">
-        <div className="row">
-          <div className="col s12 m6 offset-m3">
-            <div className="card medium">
-              <CSSTransition timeout={200} classNames="title">
-                <h4 className="section center">Register</h4>
-              </CSSTransition>
+    <div className="register">
+      <div className="row">
+        <div className="col s12 m6 offset-m3">
+          <div className="card section">
+            <CSSTransition
+              appear={true}
+              in={true}
+              timeout={1000}
+              classNames="title"
+            >
+              <h4 className="section center">Register</h4>
+            </CSSTransition>
 
-              <div className="divider"></div>
+            <div className="divider"></div>
 
-              <form className="section" onSubmit={handleSubmit}>
+            <CSSTransition
+              appear={true}
+              in={true}
+              timeout={1000}
+              classNames="form"
+            >
+              <form className="section container" onSubmit={handleSubmit}>
                 <div className="row">
+                  <div className="input-field col s12 m6 offset-m3">
+                    <input
+                      id="firstName"
+                      type="text"
+                      maxLength="25"
+                      minLength="1"
+                      className="validate"
+                    />
+                    <label htmlFor="firstName">First Name</label>
+                  </div>
+                  <div className="input-field col s12 m6 offset-m3">
+                    <input
+                      id="lastName"
+                      type="text"
+                      maxLength="25"
+                      minLength="1"
+                      className="validate"
+                    />
+                    <label htmlFor="lastName">Last Name</label>
+                  </div>
+
                   <div className="input-field col s12 m6 offset-m3">
                     <input id="email" type="email" className="validate" />
                     <label htmlFor="email">Email</label>
@@ -38,18 +69,24 @@ function Register() {
                       type="submit"
                       className="waves-effect waves-light btn-small green right"
                     >
-                      Login
+                      Register
                     </button>
                   </div>
                 </div>
               </form>
-
-              <div className="row">
+            </CSSTransition>
+            <CSSTransition
+              appear={true}
+              in={true}
+              timeout={1000}
+              classNames="link"
+            >
+              <div className="row center">
                 <div className="col s12 m6 offset-m3">
                   Already have an Account?<Link to="/login"> Login</Link>
                 </div>
               </div>
-            </div>
+            </CSSTransition>
           </div>
         </div>
       </div>

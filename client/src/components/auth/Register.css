@@ -1,0 +1,28 @@
+.title-appear {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.title-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 300ms ease-in;
+}
+
+.form-appear {
+  opacity: 0;
+}
+.form-appear-active {
+  opacity: 1;
+  transition: all 600ms 300ms ease-in;
+}
+
+.link-appear {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.link-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 300ms 400ms ease-in;
+}
