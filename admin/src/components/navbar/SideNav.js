@@ -43,7 +43,7 @@ function SideNav() {
           </Link>
         </li>
         <li>
-          <Link to="/admin/products">
+          <Link to="/products">
             <i className="material-icons">category</i>Products
           </Link>
         </li>

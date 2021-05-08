@@ -4,8 +4,26 @@ import UsersTable from "./UsersTable";
 import Navbar from "../navbar/Navbar";
 import "./Auth.css";
 import AddNewUserModal from "../Modals/AddNewUserModal";
+import { Redirect } from "react-router-dom";
 
 export default class Auth extends Component {
+
+  constructor(props){
+    super(props)
+    const token=localStorage.getItem("token")
+    
+    let loggedIn=true
+    if(token==null){
+      
+      loggedIn=false
+    }
+
+    this.state={
+      loggedIn
+    }
+  }
+
+
   componentDidMount() {
     const M = window.M;
     const el = document.querySelector(".tabs");
@@ -15,10 +33,11 @@ export default class Auth extends Component {
   }
 
   render() {
+    if(this.state.loggedIn===false){
+      return <Redirect to="/"/>
+    }
     return (
       <>
-        <Navbar />
-
         <div
           className="container"
           // style={{ marginTop: 40, border: "1px grey solid" }}

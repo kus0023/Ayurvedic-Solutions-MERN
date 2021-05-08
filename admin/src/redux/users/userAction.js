@@ -1,5 +1,5 @@
 import {ADD_USER,REMOVE_USER} from './userType'
-import  from 'axios'
+import {} from 'axios'
 export const addUser=()=>{
     return{
         type:ADD_USER
@@ -12,7 +12,7 @@ export const removeUser=()=>{
     }
 }
 
-const setLoadingTrue()=>{
+const setLoadingTrue=()=>{
     return
 }
 

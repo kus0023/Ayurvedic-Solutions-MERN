@@ -1,8 +1,9 @@
 import axios from 'axios'
 import {ADD_USER,REMOVE_USER} from './userType'
 
-initialState={
+const initialState={
     //list of users
+    item:[]
 }
 
 const userReducer=(state=initialState,action)=>{
