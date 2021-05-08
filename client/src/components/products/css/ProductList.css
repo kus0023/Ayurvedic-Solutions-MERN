@@ -1,0 +1,16 @@
+.page-box {
+  border: 1px solid orange;
+  height: max-content;
+}
+
+.page-box i {
+  color: orange;
+  size: 150%;
+}
+
+.rotate-left {
+  transform: rotate(180deg);
+}
+
+.current-page h4 {
+}
