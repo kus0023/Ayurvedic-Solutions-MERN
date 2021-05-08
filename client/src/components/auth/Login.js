@@ -19,7 +19,9 @@ function Login() {
               timeout={600}
               classNames="title"
             >
-              <h4 className="section center">Login</h4>
+              <div>
+                <h4 className="section center">Login</h4>
+              </div>
             </CSSTransition>
 
             <div className="divider"></div>
@@ -38,7 +40,12 @@ function Login() {
                   </div>
 
                   <div className="input-field col s12 m6 offset-m3">
-                    <input id="password" type="password" className="validate" />
+                    <input
+                      autoComplete="false"
+                      id="password"
+                      type="password"
+                      className="validate"
+                    />
                     <label htmlFor="password">Password</label>
                   </div>
                 </div>
@@ -64,6 +71,8 @@ function Login() {
               <div className="row center">
                 <div className="col s12 m6 offset-m3">
                   Don't have an Account?<Link to="/register"> Register</Link>
+                  <div className="divider"></div>
+                  Go Back To <Link to="/">Home</Link>
                 </div>
               </div>
             </CSSTransition>

@@ -84,6 +84,8 @@ function Register() {
               <div className="row center">
                 <div className="col s12 m6 offset-m3">
                   Already have an Account?<Link to="/login"> Login</Link>
+                  <div className="divider"></div>
+                  Go Back To <Link to="/">Home</Link>
                 </div>
               </div>
             </CSSTransition>
