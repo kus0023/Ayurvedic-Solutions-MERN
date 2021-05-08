@@ -13,7 +13,7 @@ function Navbar() {
             Logo
           </a>
           <a href="#!" data-target="slide-out" className="sidenav-trigger">
-            <i class="material-icons">menu</i>
+            <i className="material-icons">menu</i>
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <LogedOutLinks />
