@@ -1,5 +1,6 @@
 import React from "react";
 import Search from "./Search";
+import SearchResult from "./SearchResult";
 
 function Home() {
   return (
@@ -7,7 +8,9 @@ function Home() {
       <div className="row">
         <Search />
       </div>
-      <div className="row"></div>
+      <div className="row">
+        <SearchResult />
+      </div>
     </div>
   );
 }
