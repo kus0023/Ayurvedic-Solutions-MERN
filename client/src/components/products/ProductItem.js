@@ -2,8 +2,8 @@ import React from "react";
 
 function ProductItem() {
   return (
-    <div>
-      <h1>Item 1</h1>
+    <div className="center">
+      <h1>Items </h1>
     </div>
   );
 }
