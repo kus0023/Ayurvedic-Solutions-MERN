@@ -1,12 +1,13 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, useParams } from "react-router-dom";
 
 function ProductItem() {
   const { url } = useRouteMatch();
+  const { id } = useParams();
 
   return (
     <>
-      <Link to={`${url}yeah`} className="collection-item avatar">
+      <Link to={`${url}/${id}`} className="collection-item avatar">
         <img
           src="https://images.pexels.com/photos/1003914/pexels-photo-1003914.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
