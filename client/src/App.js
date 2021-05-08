@@ -7,6 +7,7 @@ import Navbar from "./components/nav/Navbar";
 import NotFound from "./components/404/NotFound";
 import ProdutList from "./components/products/ProdutList";
 import DiseaseList from "./components/disease/DiseaseList";
+import ProductDetail from "./components/products/ProductDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/product" exact component={ProdutList} />
+              <Route path="/product/:id" exact component={ProductDetail} />
               <Route path="/disease" exact component={DiseaseList} />
 
               {/* laslty if route is wrong */}
