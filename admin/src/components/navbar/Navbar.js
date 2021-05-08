@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SideNav from "./SideNav";
 
+function HandleLogout(){
+ 
+  window.localStorage.removeItem("token")
+}
+
+
 function Navbar() {
   return (
     <div>
@@ -20,7 +26,7 @@ function Navbar() {
             </a>
             <ul id="nav-mobile" className="right ">
               <li>
-                <Link to="/admin/login">Logout</Link>
+                <Link  onClick={ ()=> HandleLogout()} to="/">Logout</Link>
               </li>
             </ul>
           </div>

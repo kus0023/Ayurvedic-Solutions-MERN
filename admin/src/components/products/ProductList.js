@@ -1,23 +1,26 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import AddNewProductModal from "../Modals/AddNewProductModal";
 import Navbar from "../navbar/Navbar";
 import Product from "./Product";
 
 class ProductList extends Component {
+
+  
   
   render() {
+    const data =  this.props.data;
     return (
       <div>
-        <Navbar />
+      
         <div class="container">
           <div class="row">
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+
+            {
+data && data.map((item, i)=> <Product key={i} data={item} />)
+            }
+           
+          
           </div>
         </div>
 
@@ -37,4 +40,10 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList;
+const mapStateToProps= state =>{
+  return{
+    data: state.product.items
+  }
+}
+
+export default connect (mapStateToProps)(ProductList);
