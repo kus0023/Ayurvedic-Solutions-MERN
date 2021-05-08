@@ -25,7 +25,12 @@ class ProdutList extends Component {
           </div>
         </div>
         <div className="row">
-          <ProductItem />
+          <div class="collection">
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+          </div>
         </div>
       </div>
     );
