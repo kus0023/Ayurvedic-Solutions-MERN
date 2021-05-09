@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import AlwaysShowLinks from "./AlwaysShowLinks";
 import LogedInLinks from "./LogedInLinks";
 import LogedOutLinks from "./LogedOutLinks";
@@ -17,34 +18,32 @@ class Sidebar extends React.Component {
     instance.destroy();
   }
   render() {
+    const { user } = this.props;
     return (
       <>
-        <ul id="slide-out" className="sidenav">
-          <li>
-            <div className="user-view">
-              <div className="background">
-                <img
-                  src="https://materializecss.com/images/office.jpg"
-                  alt=""
-                />
+        <ul id="slide-out" className="sidenav orange lighten-5">
+          {user && (
+            <li>
+              <div className="user-view">
+                <div className="background  orange darken-4"></div>
+                <a href="#user">
+                  <img
+                    className="circle"
+                    src="https://materializecss.com/images/yuna.jpg"
+                    alt=""
+                  />
+                </a>
+                <a href="#name">
+                  <span className="white-text name">{`${user.firstName} ${user.lastName}`}</span>
+                </a>
+                <a href="#email">
+                  <span className="white-text email">{user.email}</span>
+                </a>
               </div>
-              <a href="#user">
-                <img
-                  className="circle"
-                  src="https://materializecss.com/images/yuna.jpg"
-                  alt=""
-                />
-              </a>
-              <a href="#name">
-                <span className="white-text name">John Doe</span>
-              </a>
-              <a href="#email">
-                <span className="white-text email">jdandturk@gmail.com</span>
-              </a>
-            </div>
-          </li>
-          <LogedInLinks />
-          <LogedOutLinks />
+            </li>
+          )}
+          {user ? <LogedInLinks /> : <LogedOutLinks />}
+
           <li>
             <div className="divider"></div>
           </li>
@@ -80,4 +79,10 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
