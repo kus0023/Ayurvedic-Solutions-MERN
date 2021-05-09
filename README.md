@@ -5,7 +5,8 @@
 Put these essential constants,
 
 ```
-DATABASE_MONGO_URL=<MongoDb URL>
+DATABASE_NAME=<name>
+DATABASE_MONGO_URL=<MongoDb URL> (at the place of name put doller $)
 SESSION_SECRETE=<some secrete key>
 JWT_SECRETE=<some secrete key>
 NODE_ENV=production
