@@ -33,6 +33,7 @@ module.exports = {
         req.session = { user, sessionId: payload.session, token };
         next();
       } catch (e) {
+        console.log(e);
         return res.status(500).json({
           messege: "Internal error",
           error: e.message,
