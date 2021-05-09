@@ -12,32 +12,35 @@ import ProductDetail from "./components/products/ProductDetail";
 //store
 import { Provider } from "react-redux";
 import store from "./redux/Store";
+import AuthProvider from "./utils/provider/AuthProvider";
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="*">
-            <div>
-              <Navbar />
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/product" exact component={ProdutList} />
-                <Route path="/product/:id" exact component={ProductDetail} />
-                <Route path="/disease" exact component={DiseaseList} />
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="*">
+              <div>
+                <Navbar />
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/product" exact component={ProdutList} />
+                  <Route path="/product/:id" exact component={ProductDetail} />
+                  <Route path="/disease" exact component={DiseaseList} />
 
-                {/* laslty if route is wrong */}
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </Switch>
-            </div>
-          </Route>
-        </Switch>
-      </BrowserRouter>
+                  {/* laslty if route is wrong */}
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
+              </div>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
     </Provider>
   );
 }
