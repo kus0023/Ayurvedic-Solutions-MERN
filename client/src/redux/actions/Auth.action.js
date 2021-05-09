@@ -20,6 +20,22 @@ const setLoginFailure = (error) => {
   return { type: authType.LOGIN_FAILED_WITH_ERROR, payload: error };
 };
 
+const setRegisterLoading = (isLoading) => {
+  if (isLoading) {
+    return { type: authType.SET_REGISTER_LOADING_TRUE };
+  } else {
+    return { type: authType.SET_REGISTER_LOADING_FALSE };
+  }
+};
+
+const setRegisterSuccess = () => {
+  return { type: authType.REGISTER_SUCCESS };
+};
+
+const setRegisterFailure = (error) => {
+  return { type: authType.REGISTER_FAILED_WITH_ERROR, payload: error };
+};
+
 const setIsReady = (isReady) => {
   if (isReady) {
     return { type: authType.SET_READY_TRUE };
@@ -56,6 +72,24 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(setLoginFailure(message));
   } finally {
     dispatch(setLoginLoading(false));
+  }
+};
+
+export const registerUser = (user) => async (dispatch) => {
+  dispatch(setRegisterLoading(true));
+
+  try {
+    const res = await axios.post("api/user/register", user);
+
+    console.log(res.data);
+
+    dispatch(setRegisterSuccess());
+  } catch (error) {
+    const message = error.response.data.message;
+    console.log(message);
+    dispatch(setRegisterFailure(message));
+  } finally {
+    dispatch(setRegisterLoading(false));
   }
 };
 

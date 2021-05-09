@@ -65,6 +65,40 @@ export default function AuthReducer(state = initialState, action) {
         },
       };
 
+    case authType.SET_REGISTER_LOADING_FALSE:
+      return {
+        ...state,
+        register: {
+          ...state.register,
+          isLoading: false,
+        },
+      };
+    case authType.SET_REGISTER_LOADING_TRUE:
+      return {
+        ...state,
+        register: {
+          ...state.register,
+          isLoading: true,
+        },
+      };
+
+    case authType.REGISTER_SUCCESS:
+      return {
+        ...state,
+        register: {
+          ...state.register,
+          error: null,
+        },
+      };
+    case authType.REGISTER_FAILED_WITH_ERROR:
+      return {
+        ...state,
+        register: {
+          ...state.register,
+          error: action.payload,
+        },
+      };
+
     case authType.LOGOUT:
       return {
         ...state,
