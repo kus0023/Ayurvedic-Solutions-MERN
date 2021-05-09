@@ -8,7 +8,7 @@ const router = require("express").Router();
  */
 router.use("/cart", require("./Cart.route"));
 
-router.use("/getAuth", (req, res) => {
+router.get("/getAuth", (req, res) => {
   const { user, token } = req.session;
   return res.status(200).json({
     message: "Verified",
