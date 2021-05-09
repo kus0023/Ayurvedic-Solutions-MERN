@@ -7,7 +7,11 @@ class AuthProvider extends Component {
     this.props.getAuth();
   }
   render() {
-    return this.props.isReady ? this.props.children : <h1>Loading..</h1>;
+    return this.props.isReady ? (
+      this.props.children
+    ) : (
+      <h1 className="center">Loading..</h1>
+    );
   }
 }
 

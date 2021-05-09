@@ -106,8 +106,8 @@ export const logout = () => async (dispatch) => {
     //user set to null
     dispatch({ type: authType.LOGOUT });
   } catch (e) {
-    console.log(e, typeof e, e.message);
+    console.log(e.response.data);
   } finally {
-    dispatch(setLogoutLoading(true));
+    dispatch(setLogoutLoading(false));
   }
 };

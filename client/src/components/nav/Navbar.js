@@ -6,9 +6,12 @@ import Sidebar from "./Sidebar";
 
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import LinearLoader from "../loader/LinearLoader";
 
 function Navbar() {
-  const user = useSelector((state) => state.auth.user);
+  const auth = useSelector((state) => state.auth);
+  const { user, logout } = auth;
+  console.log(user);
   return (
     <div>
       <nav>
@@ -31,7 +34,7 @@ function Navbar() {
           </ul>
         </div>
       </nav>
-
+      {logout.isLoading && <LinearLoader />}
       <Sidebar />
     </div>
   );
