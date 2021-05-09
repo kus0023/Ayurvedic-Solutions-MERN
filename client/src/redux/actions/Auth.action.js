@@ -3,6 +3,23 @@ import * as authType from "../types/Auth.types";
 
 //dispatch creators
 
+const setLoginLoading = (isLoading) => {
+  if (isLoading) {
+    return { type: authType.SET_LOGIN_LOADING_TRUE };
+  } else {
+    return { type: authType.SET_LOGIN_LOADING_FALSE };
+  }
+};
+
+const setLoginSuccess = (user, token) => {
+  localStorage.setItem("token", token);
+  return { type: authType.LOGIN_SUCCESS, payload: user };
+};
+
+const setLoginFailure = (error) => {
+  return { type: authType.LOGIN_FAILED_WITH_ERROR, payload: error };
+};
+
 const setIsReady = (isReady) => {
   if (isReady) {
     return { type: authType.SET_READY_TRUE };
@@ -23,7 +40,24 @@ const setLogoutLoading = (isLoading) => {
   }
 };
 
-//action creator
+/*************************************ACTIONS************************************************/
+
+export const login = (email, password) => async (dispatch) => {
+  dispatch(setLoginLoading(true));
+  try {
+    const data = { email, password };
+    const res = await axios.post("api/user/login", data);
+
+    const { user, token } = res.data;
+    dispatch(setLoginSuccess(user, token));
+  } catch (error) {
+    const message =
+      error.response.data.message || "Invalid Credentials (LOCAL)";
+    dispatch(setLoginFailure(message));
+  } finally {
+    dispatch(setLoginLoading(false));
+  }
+};
 
 export const getAuth = () => async (dispatch) => {
   //Get the token
@@ -35,12 +69,17 @@ export const getAuth = () => async (dispatch) => {
     },
   };
   //verify the token
+  //   await axios
+  //     .get("api/user/getAuth", config)
+  //     .then(res => )
+  //     .catch(err => console.error(err));
   try {
     const res = await axios.get("api/user/getAuth", config);
+
     const { user } = res.data;
     dispatch(setUser(user));
   } catch (e) {
-    console.log(e.status);
+    console.log(e.response.data);
     dispatch(setUser(null));
   } finally {
     dispatch(setIsReady(true));
@@ -67,7 +106,7 @@ export const logout = () => async (dispatch) => {
     //user set to null
     dispatch({ type: authType.LOGOUT });
   } catch (e) {
-    console.log(e);
+    console.log(e, typeof e, e.message);
   } finally {
     dispatch(setLogoutLoading(true));
   }
