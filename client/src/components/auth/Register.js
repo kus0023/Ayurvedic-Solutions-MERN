@@ -1,17 +1,39 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
+import { registerUser } from "../../redux/actions/Auth.action";
+import { useDispatch, useSelector } from "react-redux";
+import LinearLoader from "../loader/LinearLoader";
+import { successMessage } from "../../utils/messages/ToastMessages";
 
 function Register() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { handleSubmit, register } = useForm();
+
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  const history = useHistory();
+
+  const onSubmit = async (data) => {
+    await dispatch(registerUser(data));
+
+    if (auth.register.error == null) {
+      successMessage("Successfully Registered");
+      history.push("/login");
+    }
   };
+
+  if (auth.user) {
+    history.goBack();
+  }
 
   return (
     <div className="register">
       <div className="row">
         <div className="col s12 m6 offset-m3">
           <div className="card section">
+            {auth.register.isLoading && <LinearLoader />}
             <CSSTransition
               appear={true}
               in={true}
@@ -21,6 +43,12 @@ function Register() {
               <h4 className="section center">Register</h4>
             </CSSTransition>
 
+            {auth.register.error && (
+              <div className=" center red white-text" style={{ padding: 10 }}>
+                <b>{auth.register.error}</b>
+              </div>
+            )}
+
             <div className="divider"></div>
 
             <CSSTransition
@@ -29,7 +57,10 @@ function Register() {
               timeout={1000}
               classNames="form"
             >
-              <form className="section container" onSubmit={handleSubmit}>
+              <form
+                className="section container"
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <div className="row">
                   <div className="input-field col s12 m6 offset-m3">
                     <input
@@ -38,6 +69,7 @@ function Register() {
                       maxLength="25"
                       minLength="1"
                       className="validate"
+                      {...register("firstName")}
                     />
                     <label htmlFor="firstName">First Name</label>
                   </div>
@@ -48,17 +80,28 @@ function Register() {
                       maxLength="25"
                       minLength="1"
                       className="validate"
+                      {...register("lastName")}
                     />
                     <label htmlFor="lastName">Last Name</label>
                   </div>
 
                   <div className="input-field col s12 m6 offset-m3">
-                    <input id="email" type="email" className="validate" />
+                    <input
+                      id="email"
+                      type="email"
+                      className="validate"
+                      {...register("email")}
+                    />
                     <label htmlFor="email">Email</label>
                   </div>
 
                   <div className="input-field col s12 m6 offset-m3">
-                    <input id="password" type="password" className="validate" />
+                    <input
+                      id="password"
+                      type="password"
+                      className="validate"
+                      {...register("password")}
+                    />
                     <label htmlFor="password">Password</label>
                   </div>
                 </div>
@@ -68,6 +111,7 @@ function Register() {
                     <button
                       type="submit"
                       className="waves-effect waves-light btn-small green right"
+                      disabled={auth.register.isLoading}
                     >
                       Register
                     </button>
