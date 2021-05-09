@@ -7,6 +7,7 @@ const initialState = {
 
   login: { error: null, isLoading: false },
   register: { error: null, isLoading: false },
+  logout: { error: null, isLoading: false },
 };
 
 export default function AuthReducer(state = initialState, action) {
@@ -26,6 +27,29 @@ export default function AuthReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      };
+
+    case authType.LOGOUT:
+      return {
+        ...state,
+        user: null,
+      };
+
+    case authType.SET_LOGOUT_LOADING_TRUE:
+      return {
+        ...state,
+        logout: {
+          ...state.logout,
+          isLoading: true,
+        },
+      };
+    case authType.SET_LOGOUT_LOADING_FALSE:
+      return {
+        ...state,
+        logout: {
+          ...state.logout,
+          isLoading: false,
+        },
       };
 
     default:

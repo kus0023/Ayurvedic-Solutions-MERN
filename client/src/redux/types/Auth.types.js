@@ -1,3 +1,7 @@
 export const SET_READY_TRUE = "SET_READY_TRUE";
 export const SET_READY_FALSE = "SET_READY_FALSE";
 export const SET_USER = "SET_USER";
+
+export const LOGOUT = "LOGOUT";
+export const SET_LOGOUT_LOADING_TRUE = "SET_LOGOUT_LOADING_TRUE";
+export const SET_LOGOUT_LOADING_FALSE = "SET_LOGOUT_LOADING_FALSE";
