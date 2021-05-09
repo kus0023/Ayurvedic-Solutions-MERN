@@ -40,7 +40,7 @@ export const getAuth = () => async (dispatch) => {
     const { user } = res.data;
     dispatch(setUser(user));
   } catch (e) {
-    console.log(e.e.status);
+    console.log(e.status);
     dispatch(setUser(null));
   } finally {
     dispatch(setIsReady(true));
