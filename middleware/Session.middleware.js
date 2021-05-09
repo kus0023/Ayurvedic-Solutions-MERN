@@ -30,7 +30,7 @@ module.exports = {
 
         const user = await User.findById(payload.user);
 
-        req.session = { user, sessionId: payload.session };
+        req.session = { user, sessionId: payload.session, token };
         next();
       } catch (e) {
         return res.status(500).json({
