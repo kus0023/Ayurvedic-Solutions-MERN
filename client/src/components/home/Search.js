@@ -7,7 +7,7 @@ function Search() {
     e.preventDefault();
   };
   return (
-    <div className="container">
+    <div className="container search-page">
       <CSSTransition appear={true} in={true} timeout={1000} classNames="search">
         <form onSubmit={submitForm}>
           <div className="row">

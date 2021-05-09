@@ -1,4 +1,4 @@
-.input-field input[type="text"] {
+.search-page .input-field input[type="text"] {
   border: 1px solid gray;
   border-radius: 10px;
   padding: 5px;
@@ -8,22 +8,22 @@
 }
 
 /* label underline focus color */
-.input-field input[type="text"]:focus {
+.search-page .input-field input[type="text"]:focus {
   border: 1px solid darkviolet;
   box-shadow: 0 1px 0 0 darkviolet !important;
 }
 /* valid color */
-.input-field input[type="text"].valid {
+.search-page .input-field input[type="text"].valid {
   border: 1px solid green;
   box-shadow: 0 1px 0 0 green !important;
 }
 /* invalid color */
-.input-field input[type="text"].invalid {
+.search-page .input-field input[type="text"].invalid {
   border: 1px solid red;
   box-shadow: 0 1px 0 0 red !important;
 }
 /* icon prefix focus color */
-.input-field .prefix.active {
+.search-page .input-field .prefix.active {
   color: #000;
 }
 
