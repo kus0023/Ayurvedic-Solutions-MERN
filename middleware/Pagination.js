@@ -20,10 +20,13 @@ function Pagination(
   path = ""
 ) {
   return async (req, res, next) => {
-    const page = Number.parseInt(req.query.page || "1") || 1;
+    let page = Number.parseInt(req.query.page || "1") || 1;
     const limit = Number.parseInt(req.query.limit || "10");
     if (limit > 20) {
       limit = 20;
+    }
+    if (page < 0) {
+      page = 1;
     }
 
     const total = await model.find({}).countDocuments();
@@ -36,16 +39,24 @@ function Pagination(
     const total_pages = Math.ceil(total / limit);
     req.pagination.total_pages = total_pages;
 
+    //when only 1 page is there
+    req.pagination.current = total_pages;
+
+    //check if
     if (startIndex !== 0) {
       req.pagination.prev = {
-        page: page > total_pages ? total_pages : page - 1,
+        page: page > total_pages ? total_pages - 1 : page - 1,
       };
+
+      req.pagination.current = total_pages ? total_pages : page - 1;
     }
 
     if (endIndex < total) {
       req.pagination.next = {
         page: page + 1,
       };
+
+      req.pagination.current = page;
     }
 
     try {
