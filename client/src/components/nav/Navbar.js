@@ -11,7 +11,6 @@ import LinearLoader from "../loader/LinearLoader";
 function Navbar() {
   const auth = useSelector((state) => state.auth);
   const { user, logout } = auth;
-  console.log(user);
   return (
     <div>
       <nav>
