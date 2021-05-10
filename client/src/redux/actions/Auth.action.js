@@ -85,7 +85,7 @@ export const registerUser = (user) => async (dispatch) => {
 
     dispatch(setRegisterSuccess());
   } catch (error) {
-    const message = error.response.data.message;
+    const message = error.response?.data?.message;
     console.log(message);
     dispatch(setRegisterFailure(message));
   } finally {
@@ -117,7 +117,7 @@ export const getAuth = () => async (dispatch) => {
       throw new Error("SESSION EXPIRED");
     }
   } catch (e) {
-    console.log(e.response.data);
+    console.log(e.response?.data);
     dispatch(setUser(null));
   } finally {
     dispatch(setIsReady(true));
