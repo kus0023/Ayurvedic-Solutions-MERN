@@ -101,6 +101,15 @@ router.get(
   }
 );
 
+router.get("/getAuth", (req, res) => {
+  const { user, token } = req.session;
+  return res.status(200).json({
+    message: "Verified",
+    user,
+    token,
+  });
+});
+
 router.get("/logout", (req, res) => {
   const sessionId = req.session.sessionId;
   Session.findByIdAndDelete(sessionId)
