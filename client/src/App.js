@@ -15,6 +15,11 @@ import store from "./redux/Store";
 import AuthProvider from "./utils/provider/AuthProvider";
 
 function App() {
+  //It removes all the console message when in production
+  //So that user can't see log messages
+  if (process.env.REACT_APP_STAGE === "PROD")
+    console.log = function no_console() {};
+
   return (
     <Provider store={store}>
       <AuthProvider>
