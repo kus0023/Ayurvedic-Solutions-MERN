@@ -13,6 +13,7 @@ import ProductDetail from "./components/products/ProductDetail";
 import { Provider } from "react-redux";
 import store from "./redux/Store";
 import AuthProvider from "./utils/provider/AuthProvider";
+import DiseaseDetail from "./components/disease/DiseaseDetail";
 
 function App() {
   //It removes all the console message when in production
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/product" exact component={ProductList} />
                   <Route path="/product/:id" exact component={ProductDetail} />
                   <Route path="/disease" exact component={DiseaseList} />
+                  <Route path="/disease/:id" exact component={DiseaseDetail} />
 
                   {/* laslty if route is wrong */}
                   <Route path="*">
