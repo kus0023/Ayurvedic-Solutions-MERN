@@ -117,7 +117,7 @@ export const getAuth = () => async (dispatch) => {
       throw new Error("SESSION EXPIRED");
     }
   } catch (e) {
-    console.log(e.response?.data);
+    console.log(e.response?.data || e.message);
     dispatch(setUser(null));
   } finally {
     dispatch(setIsReady(true));
