@@ -2,50 +2,21 @@ import React, { Component } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import SearchResultItem from "./SearchResultItem";
 import "./css/SearchResult.css";
+import { connect } from "react-redux";
 
 class SearchResult extends Component {
-  state = {
-    list: [],
-  };
-  componentDidMount() {
-    const add = setInterval(() => {
-      this.setState((state) => {
-        const newList = [...state.list, 1];
-
-        return {
-          list: newList,
-        };
-      });
-    }, 2000);
-
-    setTimeout(() => {
-      clearInterval(add);
-      const del = setInterval(() => {
-        this.setState((state) => {
-          // eslint-disable-next-line
-          const newList = state.list.filter((e, i) => i != 0);
-
-          return {
-            list: newList,
-          };
-        });
-      }, 2000);
-
-      setTimeout(() => {
-        clearInterval(del);
-      }, 10000);
-    }, 10000);
-  }
-
   render() {
+    if (this.props.isLoading) {
+      <div>Loading</div>;
+    }
     return (
       <div className="container ">
         <div className="collection">
           <TransitionGroup>
-            {this.state.list?.map((e, i) => {
+            {this.props.list.map((item, i) => {
               return (
                 <CSSTransition key={i} timeout={1000} classNames="item">
-                  <SearchResultItem />
+                  <SearchResultItem item={item.item} />
                 </CSSTransition>
               );
             })}
@@ -56,4 +27,9 @@ class SearchResult extends Component {
   }
 }
 
-export default SearchResult;
+const mapStateToProps = (state) => ({
+  list: state.searchState.list,
+  isLoading: state.searchState.isLoading,
+});
+
+export default connect(mapStateToProps)(SearchResult);
