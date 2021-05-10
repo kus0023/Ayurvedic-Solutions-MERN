@@ -1,0 +1,32 @@
+.page-box {
+  border: 1px solid orange;
+  height: max-content;
+}
+
+.page-box i {
+  color: orange;
+  size: 150%;
+}
+
+.rotate-left {
+  transform: rotate(180deg);
+}
+
+.product-item-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.product-item-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 150ms ease-in-out;
+}
+.product-item-exit {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.product-item-exit-active {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 150ms ease-in-out;
+}
