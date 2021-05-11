@@ -38,7 +38,7 @@ function SideNav() {
           </div>
         </li>
         <li>
-          <Link to="/admin">
+          <Link to="/data">
             <i className="material-icons">lock</i>Athentication
           </Link>
         </li>
