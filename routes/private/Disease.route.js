@@ -90,7 +90,8 @@ router.post("/update", async (req, res) => {
       });
     }
 
-    const { name, causes, description, symptoms, remedies } = req.body;
+    const { name, commonNames, causes, description, symptoms, remedies } =
+      req.body;
 
     name && doc.set({ name });
     commonNames && doc.set({ commonNames });
