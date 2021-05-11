@@ -1,7 +1,26 @@
 const router = require("express").Router();
 const { verifyAdminToken } = require("../../middleware/Admin.middleware");
 const { verifySession } = require("../../middleware/Session.middleware");
+const Pagination = require("../../middleware/Pagination.js");
 const Disease = require("../../models/Disease");
+
+/**
+ * @route /api/products?page=page&limit=limit
+ * @query page @default 1 and limit @default 1
+ *
+ * Get All the products with pagination
+ */
+router.get(
+  "/",
+  Pagination(Disease, null, null, null, "remedies"),
+  (req, res) => {
+    // console.log(req.results);
+    return res.status(200).json({
+      pagination: req.pagination,
+      diseases: req.results,
+    });
+  }
+);
 
 router.get("/get", async (req, res) => {
   const { id } = req.query;

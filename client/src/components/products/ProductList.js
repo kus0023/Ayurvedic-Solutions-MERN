@@ -9,7 +9,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { SwitchTransition } from "react-transition-group";
 
 const limit = 3;
-class ProdutList extends Component {
+class ProductList extends Component {
   componentDidMount() {
     this.props.getProducts(1, limit);
   }
@@ -101,4 +101,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProdutList);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

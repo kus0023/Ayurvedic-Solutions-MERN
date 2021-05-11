@@ -12,7 +12,7 @@ const { verifySession } = require("../../middleware/Session.middleware");
  * Get All the products with pagination
  */
 router.get("/", Pagination(Product), (req, res) => {
-  console.log(req.results);
+  // console.log(req.results);
   return res.status(200).json({
     pagination: req.pagination,
     products: req.results,

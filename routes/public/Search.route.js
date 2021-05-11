@@ -3,7 +3,7 @@ const Fuse = require("fuse.js");
 const Product = require("../../models/Product");
 const Disease = require("../../models/Disease");
 
-router.get("/products", async (req, res) => {
+router.get("/product", async (req, res) => {
   const search = req.query.search || "";
 
   try {
@@ -29,7 +29,7 @@ router.get("/products", async (req, res) => {
   }
 });
 
-router.get("/diseases", async (req, res) => {
+router.get("/disease", async (req, res) => {
   const search = req.query.search || "";
 
   try {

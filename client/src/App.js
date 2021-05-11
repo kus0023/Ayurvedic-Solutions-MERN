@@ -5,7 +5,7 @@ import Register from "./components/auth/Register";
 import Home from "./components/home/Home";
 import Navbar from "./components/nav/Navbar";
 import NotFound from "./components/404/NotFound";
-import ProdutList from "./components/products/ProdutList";
+import ProductList from "./components/products/ProductList";
 import DiseaseList from "./components/disease/DiseaseList";
 import ProductDetail from "./components/products/ProductDetail";
 
@@ -13,6 +13,7 @@ import ProductDetail from "./components/products/ProductDetail";
 import { Provider } from "react-redux";
 import store from "./redux/Store";
 import AuthProvider from "./utils/provider/AuthProvider";
+import DiseaseDetail from "./components/disease/DiseaseDetail";
 
 function App() {
   //It removes all the console message when in production
@@ -32,9 +33,10 @@ function App() {
                 <Navbar />
                 <Switch>
                   <Route path="/" exact component={Home} />
-                  <Route path="/product" exact component={ProdutList} />
+                  <Route path="/product" exact component={ProductList} />
                   <Route path="/product/:id" exact component={ProductDetail} />
                   <Route path="/disease" exact component={DiseaseList} />
+                  <Route path="/disease/:id" exact component={DiseaseDetail} />
 
                   {/* laslty if route is wrong */}
                   <Route path="*">
