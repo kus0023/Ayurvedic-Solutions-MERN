@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //-----------------DATABASE-----------------------------
-// Database connection
+// Database connection file
 require("./database/db");
 
 //All route is in one folder related to api
