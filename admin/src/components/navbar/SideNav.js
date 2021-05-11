@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 function SideNav() {
   useEffect(() => {
-    //const M = window.M;
-    //const elems = document.querySelectorAll(".sidenav");
-    //const instances = M.Sidenav.init(elems, {});
+    const M = window.M;
+    const elems = document.querySelectorAll(".sidenav");
+    const instances = M.Sidenav.init(elems, {});
 
     return () => {
-      // const elem = document.querySelectorAll(".sidenav")[0];
-      // var instance = M.Sidenav.getInstance(elem);
-      // instance.destroy();
+      const elem = document.querySelectorAll(".sidenav")[0];
+      var instance = M.Sidenav.getInstance(elem);
+      instance.destroy();
     };
   }, []);
 

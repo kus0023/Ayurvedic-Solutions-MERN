@@ -31,7 +31,7 @@ export const getAuth=()=> async(dispatch)=>{
 
     try {
         if (token) {
-          const res = await axios.get("api/user/getAuth", config);
+          const res = await axios.get("/api/admin/getAuth/", config);
     
           const { user } = res.data;
           dispatch(actionCreator.setUser(user));
@@ -50,18 +50,18 @@ export const getAuth=()=> async(dispatch)=>{
       dispatch(actionCreator.setLogoutLoading(true));
     
       //get the token
-      //const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
     
-      // const config = {
-      //   headers: {
-      //     Authorization: "Bearer " + token,
-      //   },
-      // };
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      };
 
 
 
     try{
-        //const res=await axios.get("api/admin/getAuth",config);
+        const res=await axios.get("/api/admin/getAuth/",config);
         localStorage.removeItem("token");
         dispatch({type: authType.LOGOUT });
     }catch(e){

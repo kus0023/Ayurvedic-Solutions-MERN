@@ -1,4 +1,3 @@
-
 import * as authType from './userType'
 
 const initialState={

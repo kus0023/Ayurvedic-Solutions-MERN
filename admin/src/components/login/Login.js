@@ -14,7 +14,6 @@ function Login() {
 
   const dispatch=useDispatch();
   const auth=useSelector((state) => state.auth);
-  console.log(auth)
   const history=useHistory();
 
   
@@ -64,6 +63,7 @@ function Login() {
                       <button
                         type="submit"
                         className="waves-effect waves-light btn-small green right"
+                        disabled={auth.login.isLoading}
                       >
                         Login
                       </button>
