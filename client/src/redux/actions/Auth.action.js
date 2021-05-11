@@ -68,7 +68,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(setLoginSuccess(user, token));
   } catch (error) {
     const message =
-      error.response.data.message || "Invalid Credentials (LOCAL)";
+      error.response?.data?.message || "Invalid Credentials (LOCAL)";
     dispatch(setLoginFailure(message));
   } finally {
     dispatch(setLoginLoading(false));

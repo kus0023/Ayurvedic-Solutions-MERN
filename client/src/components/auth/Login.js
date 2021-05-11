@@ -25,7 +25,7 @@ function Login() {
   };
 
   if (auth.user) {
-    history.goBack();
+    history.push("/");
   }
 
   return (
