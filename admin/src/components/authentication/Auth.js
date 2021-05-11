@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import AdminTable from "./AdminTable";
 import UsersTable from "./UsersTable";
-import Navbar from "../navbar/Navbar";
 import "./Auth.css";
 import AddNewUserModal from "../Modals/AddNewUserModal";
 import { Redirect } from "react-router-dom";

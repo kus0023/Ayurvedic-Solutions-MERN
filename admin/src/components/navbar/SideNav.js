@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function SideNav() {
   useEffect(() => {
-    const M = window.M;
-    const elems = document.querySelectorAll(".sidenav");
-    const instances = M.Sidenav.init(elems, {});
+    //const M = window.M;
+    //const elems = document.querySelectorAll(".sidenav");
+    //const instances = M.Sidenav.init(elems, {});
 
     return () => {
       // const elem = document.querySelectorAll(".sidenav")[0];

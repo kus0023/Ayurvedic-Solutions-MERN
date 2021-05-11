@@ -3,7 +3,7 @@ import userReducer from './users/userReducer'
 import productReducer from './products/productReducer'
 
 const rootReducer=combineReducers({
-    user:userReducer,
+    auth:userReducer,
     product:productReducer
 })
 

@@ -1,57 +1,34 @@
-import React, { Component,useState } from "react";
+import React from "react";
 import "./Login.css";
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { login } from "../../redux/index";
+import { useDispatch,useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 
+function Login() {
 
-class Login extends Component {
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
 
-  constructor(props){
-    super(props)
-    const token=localStorage.getItem("token")
-    let loggedIn=true
-    if(token==null){
-      loggedIn=false
-    }
-    this.state={
-      email:'',
-      password:'',
-      loggedIn,
-      error:null
-    }
-    this.handleChange=this.handleChange.bind(this)
-    this.handleSubmit=this.handleSubmit.bind(this)
-
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    // this.props.history.push("/admin/");
-    const { email,password }=this.state
-    if(email==="A@gmail.com" && password==="A"){
-      localStorage.setItem("token","siocnaspoxcmohjvjbkllnl")
-      this.setState({
-        loggedIn:true
-      })
-    }
-  };
-
-  handleChange(e){
-    
-    
-    this.setState({
-      [e.target.name]:e.target.value
-    })
-  }
+  const dispatch=useDispatch();
+  const auth=useSelector((state) => state.auth);
+  console.log(auth)
+  const history=useHistory();
 
   
 
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    console.log(data)
+    dispatch(login(email, password));
+  };
 
-  render() {
-    if(this.state.loggedIn){
-      return <Redirect to="/data" />
-    }
-    
-
+  if (auth.user) {
+    history.goBack();
+  }
+  
     return (
       <div className="login">
         <div className="container">
@@ -61,19 +38,23 @@ class Login extends Component {
                 <h4 class="section center">Login</h4>
                 <div class="divider"></div>
 
-                <form className="section" onSubmit={this.handleSubmit}>
+                <form className="section" onSubmit={handleSubmit(onSubmit)}>
                   <div class="row">
                     <div class="input-field col s12 m6 offset-m3">
-                      <input id="email" type="text" class="validate" name="email"  value={this.state.email} onChange={this.handleChange} />
-                      <label for="email">Email</label>
+                      <input id="email" type="email" className="validate" required {...register("email")}   />
+                      <label htmlFor="email">Email</label>
                     </div>
 
                     <div class="input-field col s12 m6 offset-m3">
-                      <input id="password" type="password" class="validate" name="password" value={this.props.password} onChange={this.handleChange} />
-                      <label for="password">Password</label>
+                      <input id="password" type="password" className="validate" required {...register("password",{min:8,required:true})} />
+                      <label htmlFor="password">Password</label>
                     </div>
                     <div class="input-field col s12 m6 offset-m3">
-                      {this.state.error && <div className="error">{this.state.error}</div>}
+                    {auth.login.error && (
+                <div className=" center red white-text" style={{ padding: 10 }}>
+                  <b>{auth.login.error}</b>
+                </div>
+              )}
                     </div>
 
                   </div>
@@ -83,7 +64,6 @@ class Login extends Component {
                       <button
                         type="submit"
                         className="waves-effect waves-light btn-small green right"
-                        
                       >
                         Login
                       </button>
@@ -98,5 +78,5 @@ class Login extends Component {
     );
   
 }
-}
+
 export default Login;

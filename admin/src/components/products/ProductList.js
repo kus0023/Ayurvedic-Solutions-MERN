@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddNewProductModal from "../Modals/AddNewProductModal";
-import Navbar from "../navbar/Navbar";
 import Product from "./Product";
 
 class ProductList extends Component {

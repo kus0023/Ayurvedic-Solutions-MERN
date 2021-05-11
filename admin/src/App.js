@@ -23,8 +23,6 @@ function App() {
           <Route path="/products" component={ProductList} />
             </Route>
           </div>
-
-         
         </Switch>
       </BrowserRouter>
     </div>

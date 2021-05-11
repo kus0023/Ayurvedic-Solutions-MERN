@@ -21,7 +21,7 @@ function Navbar() {
             <i className="material-icons">menu</i>
           </a>
           <div className="nav-wrapper container">
-            <a href="#" className="brand-logo">
+            <a href="#" className="brand-logo truncate">
               Admin-HerboFit
             </a>
             <ul id="nav-mobile" className="right ">

@@ -1,10 +1,7 @@
-import React, { Component } from "react";
-import { useSelector,useDispatch } from 'react-redux';
+import React from "react";
 
 
-function Product(props) {
- 
-  
+function Product(props) {  
   return(
     <div>
       <div class="row">
@@ -12,7 +9,7 @@ function Product(props) {
       <div class="card">
         <div class="card-image">
        
-        <img src={props.data.product_url} style={{ height:200 , width:200}}/>
+        <img alt="img" src={props.data.product_url} style={{ height:200 , width:200}}/>
         <span class="card-title red">{props.data.product_name}</span>  
         </div>
         <div class="card-content">
