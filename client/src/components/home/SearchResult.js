@@ -20,15 +20,19 @@ class SearchResult extends Component {
       <div className="container searchresult">
         <div className="collection">
           <TransitionGroup>
-            {show !== null
-              ? show
-              : this.props.list.map((item, i) => {
-                  return (
-                    <CSSTransition key={i} timeout={1000} classNames="item">
-                      <SearchResultItem item={item.item} />
-                    </CSSTransition>
-                  );
-                })}
+            {show !== null ? (
+              <CSSTransition key={0} timeout={1000} classNames="item">
+                {show}
+              </CSSTransition>
+            ) : (
+              this.props.list.map((item, i) => {
+                return (
+                  <CSSTransition key={i} timeout={1000} classNames="item">
+                    <SearchResultItem item={item.item} />
+                  </CSSTransition>
+                );
+              })
+            )}
           </TransitionGroup>
         </div>
       </div>
