@@ -21,27 +21,22 @@ function Cart() {
     dispatch(deleteCartItem(cartId));
   };
 
-  if (cartState.isLoading) {
-    return <h1 className="center">Loading</h1>;
-  }
+  // if (cartState.isLoading) {
+  //   return <h1 className="center">Loading</h1>;
+  // }
 
   return (
     <div className="cart">
       <div className="container">
-        <TransitionGroup className="collection">
-          {cartState.list.map((item, i) => (
-            <CSSTransition
-              in={true}
-              classNames="cart-item"
-              key={i}
-              timeout={600}
-            >
-              <div className="cart-item">
+        <div className="collection">
+          <TransitionGroup>
+            {cartState.list.map((item, i) => (
+              <CSSTransition key={i} timeout={1000} classNames="cart-item">
                 <CartItem item={item} handleDelete={handleDelete} />
-              </div>
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ function CartItem({ item, handleDelete }) {
   return (
     <div className="row collection-item">
       <div className="col s10 m8 ">
-        <h3 className="truncate">{item._id}</h3>
+        <h6 className="truncate">{item._id}</h6>
       </div>
       <div className="col right">
         <button
