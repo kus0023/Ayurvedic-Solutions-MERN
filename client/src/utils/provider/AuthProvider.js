@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getAuth } from "../../redux/actions/Auth.action";
+import { fetchCartItems } from "../../redux/actions/Cart.action";
 
 class AuthProvider extends Component {
   componentDidMount() {
     this.props.getAuth();
+    this.props.getCart(); //this can cause problems
   }
+
   render() {
     return this.props.isReady ? (
       this.props.children
@@ -20,8 +23,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
+  console.log(dispatch);
   return {
     getAuth: () => dispatch(getAuth()),
+    getCart: () => {
+      dispatch(fetchCartItems());
+    },
   };
 };
 
