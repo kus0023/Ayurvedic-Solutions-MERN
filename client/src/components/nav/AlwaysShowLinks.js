@@ -5,6 +5,9 @@ function AlwaysShowLinks() {
   return (
     <>
       <li>
+        <Link to="/">Search</Link>
+      </li>
+      <li>
         <Link to="/product">Products</Link>
       </li>
       <li>
