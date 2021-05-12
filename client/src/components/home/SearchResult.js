@@ -6,9 +6,6 @@ import { connect } from "react-redux";
 
 class SearchResult extends Component {
   render() {
-    if (this.props.isLoading) {
-      <div>Loading</div>;
-    }
     return (
       <div className="container ">
         <div className="collection">
