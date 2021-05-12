@@ -14,7 +14,8 @@ function Search() {
     handleSubmit(submitForm)();
   };
   const submitForm = async (data) => {
-    await dispatch(fetchData(data.type, data.search));
+    const search = data.search.trim();
+    await dispatch(fetchData(data.type, search));
   };
   return (
     <div className="container search-page">
