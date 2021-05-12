@@ -26,7 +26,7 @@ function Navbar() {
             </a>
             <ul id="nav-mobile" className="right ">
               <li>
-                <Link  onClick={ ()=> HandleLogout()} to="/">Logout</Link>
+                <Link  onClick={ ()=> HandleLogout()} to="/login">Logout</Link>
               </li>
             </ul>
           </div>

@@ -1,6 +1,7 @@
 import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Auth from "./components/authentication/Auth";
+import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import ProductList from "./components/products/ProductList";
@@ -13,14 +14,14 @@ function App() {
     <div className="App">
       <BrowserRouter basename="admin">
         <Switch>
-         
-          <Route exact path="/" component={Login} />
-
+          <Route exact path="/login" component={Login} />
           <div>
             <Route path="*">
             <Navbar/>
-          <Route path="/data" component={Auth} />
-          <Route path="/products" component={ProductList} />
+      
+          <Route path="/" exact  ><Home Cmp={Auth}/></Route>
+          <Route path="/products"><Home Cmp={ProductList}/></Route>
+     
             </Route>
           </div>
         </Switch>

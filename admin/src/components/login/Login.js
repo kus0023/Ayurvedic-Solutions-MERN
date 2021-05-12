@@ -23,9 +23,10 @@ function Login() {
     console.log(data)
     dispatch(login(email, password));
   };
+console.log(auth.user);
 
   if (auth.user) {
-    history.goBack();
+    history.push('/');
   }
   
     return (
