@@ -7,20 +7,22 @@ import { Redirect } from "react-router-dom";
 
 export default class Auth extends Component {
 
-  constructor(props){
-    super(props)
-    const token=localStorage.getItem("token")
+  // constructor(props){
+  //   super(props)
+  //   const token=localStorage.getItem("token")
     
-    let loggedIn=true
-    if(token==null){
+  //   let loggedIn=true
+  //   if(token==null){
       
-      loggedIn=false
-    }
+  //     loggedIn=false
+  //   }
 
-    this.state={
-      loggedIn
-    }
-  }
+  //   this.state={
+  //     loggedIn
+  //   }
+  // }
+
+  
 
 
   componentDidMount() {
@@ -29,12 +31,11 @@ export default class Auth extends Component {
     M.Tabs.init(el, { swipeable: true });
     // const instance = M.Tabs.getInstance(el);
     // instance.select("test-swipe-1");
+    
   }
 
   render() {
-    if(this.state.loggedIn===false){
-      return <Redirect to="/"/>
-    }
+    
     return (
       <>
         <div

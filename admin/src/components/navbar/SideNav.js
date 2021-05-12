@@ -16,7 +16,7 @@ function SideNav() {
 
   return (
     <div>
-      <ul id="slide-out" className="sidenav">
+      <ul id="slide-out" className="sidenav sidenav-close">
         <li>
           <div className="user-view">
             <div className="background">

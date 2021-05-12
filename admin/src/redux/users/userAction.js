@@ -11,6 +11,7 @@ export const login=(email,password)=> async(dispatch)=>{
 
         const { user,token }=res.data;
         dispatch(actionCreator.setLoginSuccess(user,token));
+        
     } catch(error){
       console.log(error.response);
         const message= error.response.data.message || "invalid email or password";
@@ -23,6 +24,8 @@ export const login=(email,password)=> async(dispatch)=>{
 export const getAuth=()=> async(dispatch)=>{
     const token= localStorage.getItem("token");
 
+    console.log(token);
+
     const config={
         header:{
             Authorization: "Bearer "+token,
@@ -31,8 +34,8 @@ export const getAuth=()=> async(dispatch)=>{
 
     try {
         if (token) {
-          const res = await axios.get("/api/admin/getAuth/", config);
-    
+          const res = await axios.get("api/admin/getAuth/", config);
+    console.log(res.data, "getauth ==== ");
           const { user } = res.data;
           dispatch(actionCreator.setUser(user));
         } else {

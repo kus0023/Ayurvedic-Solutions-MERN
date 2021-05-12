@@ -10,6 +10,7 @@ export const setLoginLoading=(isLoading)=>{
 };
 
 export const setLoginSuccess=(user,token)=>{
+    console.log(user, "a;ldkjfa;lsdfjk");
     localStorage.setItem("token",token);
     return { type:authType.LOGIN_SUCCESS, payload:user};
 };
@@ -28,6 +29,7 @@ export const setIsReady=(isReady)=>{
 }
 
 export const setUser=(user)=>{
+    console.log(user, "==========================================");
     return { type: authType.SET_USER,payload:user };
 }
 
