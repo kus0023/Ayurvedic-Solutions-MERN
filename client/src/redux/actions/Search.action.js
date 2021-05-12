@@ -31,7 +31,6 @@ export const fetchData = (type, query) => async (dispatch, getState) => {
       dispatch(setLoading(false));
     }
   } else {
-    console.log("else working");
     dispatch({ type: searchTypes.FETCH_DATA_FAILURE });
   }
 };
