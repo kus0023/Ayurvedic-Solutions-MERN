@@ -14,10 +14,15 @@ const setData = (data) => {
   return { type: searchTypes.FETCH_DATA_SUCCESS, payload: data };
 };
 
+const setQuery = (query) => {
+  return { type: searchTypes.SET_QUERY_SEARCH, payload: query };
+};
+
 /*****************************Actions********************************/
 
 export const fetchData = (type, query) => async (dispatch, getState) => {
   dispatch(changeType(type));
+  dispatch(setQuery(query));
   // eslint-disable-next-line
   if (query !== "") {
     dispatch(setLoading(true));
