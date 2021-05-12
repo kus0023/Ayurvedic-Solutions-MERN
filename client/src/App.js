@@ -14,6 +14,7 @@ import { Provider } from "react-redux";
 import store from "./redux/Store";
 import AuthProvider from "./utils/provider/AuthProvider";
 import DiseaseDetail from "./components/disease/DiseaseDetail";
+import Cart from "./components/cart/Cart";
 
 function App() {
   //It removes all the console message when in production
@@ -33,6 +34,7 @@ function App() {
                 <Navbar />
                 <Switch>
                   <Route path="/" exact component={Home} />
+                  <Route path="/cart" exact component={Cart} />
                   <Route path="/product" exact component={ProductList} />
                   <Route path="/product/:id" exact component={ProductDetail} />
                   <Route path="/disease" exact component={DiseaseList} />
