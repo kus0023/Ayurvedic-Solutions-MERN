@@ -14,23 +14,26 @@ function Navbar() {
   return (
     <div>
       <nav>
-        <div className="nav-wrapper">
-          <a href="#!" className="brand-logo">
-            HerboFit
-          </a>
-          <a href="#!" data-target="slide-out" className="sidenav-trigger">
-            <i className="material-icons">menu</i>
-          </a>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <AlwaysShowLinks />
-            {user ? <LogedInLinks /> : <LogedOutLinks />}
-            {user && (
-              <Link
-                to="/"
-                className="btn-floating btn waves-effect waves-light red"
-              >{`${user.firstName[0]}${user.lastName[0]}`}</Link>
-            )}
-          </ul>
+        <div className=" nav-wrapper  amber darken-2">
+          <div className="container">
+            <Link to="/" className="brand-logo">
+              HerboFit
+            </Link>
+            <a href="#!" data-target="slide-out" className="sidenav-trigger">
+              <i className="material-icons">menu</i>
+            </a>
+
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <AlwaysShowLinks />
+              {user ? <LogedInLinks /> : <LogedOutLinks />}
+              {user && (
+                <Link
+                  to="/"
+                  className="btn-floating btn waves-effect waves-light red"
+                >{`${user.firstName[0]}${user.lastName[0]}`}</Link>
+              )}
+            </ul>
+          </div>
         </div>
       </nav>
       {logout.isLoading && <LinearLoader />}

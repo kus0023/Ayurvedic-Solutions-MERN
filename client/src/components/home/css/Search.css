@@ -1,36 +1,66 @@
 .search-page .input-field input[type="text"] {
-  border: 1px solid gray;
-  border-radius: 10px;
-  padding: 5px;
-  font-size: large;
+  font-size: xx-large;
   font-family: monospace;
   font-weight: bolder;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(148, 0, 211, 0);
+  box-shadow: 0 1px 0 0 rgba(148, 0, 211, 0) !important;
 }
 
 /* label underline focus color */
 .search-page .input-field input[type="text"]:focus {
-  border: 1px solid darkviolet;
-  box-shadow: 0 1px 0 0 darkviolet !important;
+  border: 1px solid rgba(148, 0, 211, 0);
+  box-shadow: 0 1px 0 0 rgba(175, 12, 245, 0) !important;
+  transition: all 300ms;
 }
 /* valid color */
 .search-page .input-field input[type="text"].valid {
-  border: 1px solid green;
-  box-shadow: 0 1px 0 0 green !important;
+  border: 1px solid rgba(148, 0, 211, 0);
+  box-shadow: 0 1px 0 0 rgba(148, 0, 211, 0) !important;
 }
 /* invalid color */
 .search-page .input-field input[type="text"].invalid {
-  border: 1px solid red;
-  box-shadow: 0 1px 0 0 red !important;
+  border: 1px solid rgba(148, 0, 211, 0);
+  box-shadow: 0 1px 0 0 rgba(148, 0, 211, 0) !important;
 }
 /* icon prefix focus color */
 .search-page .input-field .prefix.active {
   color: #000;
 }
 
+.search-page .input-field input[type="text"]::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: gray;
+  opacity: 1; /* Firefox */
+}
+
 .search-appear {
-  transform: scaleY(0);
+  opacity: 0;
 }
 .search-appear-active {
-  transform: scaleY(1);
+  opacity: 1;
   transition: all 500ms ease-in-out;
+}
+.search-form {
+  height: max-content;
+  border-radius: 10px;
+  background-color: #ffe57f;
+}
+
+.search-page .row {
+  height: 10vh;
+}
+.search-page .select-wrapper input.select-dropdown {
+  font-size: large;
+  background-color: #e11f1f00;
+  border-right: 1px solid #000000fd;
+  border-bottom: 1px solid #9e9e9e00;
+}
+
+.search-page .select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid #9e9e9e00;
+}
+.search-page .select-wrapper ul span {
+  color: #e65100;
 }

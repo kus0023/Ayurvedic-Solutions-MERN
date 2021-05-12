@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
           {user && (
             <li>
               <div className="user-view">
-                <div className="background  orange darken-4"></div>
+                <div className="background  amber darken-3"></div>
                 <a href="#user">
                   <img
                     className="circle"
