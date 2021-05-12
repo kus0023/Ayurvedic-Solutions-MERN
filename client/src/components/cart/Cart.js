@@ -6,6 +6,7 @@ import {
   fetchCartItems,
 } from "../../redux/actions/Cart.action";
 import CartItem from "./CartItem";
+import "./css/Cart.css";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -29,8 +30,15 @@ function Cart() {
       <div className="container">
         <TransitionGroup className="collection">
           {cartState.list.map((item, i) => (
-            <CSSTransition classNames="cart-item" key={i} timeout={500}>
-              <CartItem item={item} handleDelete={handleDelete} />
+            <CSSTransition
+              in={true}
+              classNames="cart-item"
+              key={i}
+              timeout={600}
+            >
+              <div className="cart-item">
+                <CartItem item={item} handleDelete={handleDelete} />
+              </div>
             </CSSTransition>
           ))}
         </TransitionGroup>

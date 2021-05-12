@@ -1,0 +1,25 @@
+cart-item-appear {
+  opacity: 0;
+}
+
+cart-item-appear-active {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+cart-item-enter {
+  opacity: 0;
+  height: 0%;
+}
+
+cart-item-enter-active {
+  opacity: 1;
+  height: 100%;
+  transition: all 500ms ease-in-out;
+}
+cart-item-exit {
+  opacity: 1;
+}
+cart-item-exit-active {
+  opacity: 0;
+  transition: all 400ms ease-in;
+}
