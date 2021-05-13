@@ -1,51 +1,142 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 
-class AddNewUserModal extends Component {
-  componentDidMount() {
+import { addUser } from "../../redux/dashboard/AuthenticationAction";
+
+function AddNewUserModal() {
+  const isLoading = useSelector((state) => state.authenticationPage);
+
+  const dispatch = useDispatch();
+
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      isAdmin: "false",
+    },
+  });
+
+  let instance = null;
+  useEffect(() => {
     const M = window.M;
-    var elems = document.querySelectorAll(".modal");
-    M.Modal.init(elems, { dismissible: false });
-  }
-  render() {
-    return (
-      <div>
-        <div id="modal1" class="modal">
-                  <div class="modal-content">
-                    <h4>ADD Details</h4>
-                    <div class="row">
-                      <form class="col s12">
-                        <div class="row">
-                          <div class="input-field col s12">
-                              <input id="email" type="email" class="validate"/>
-                              <label for="email">Email</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="input-field col s12">
-                              <input id="password" type="password" class="validate"/>
-                              <label for="password">password</label>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="input-field col s12">
-                          <select class="browser-default">
-                            <option value="" disabled selected>Add value in</option>
-                            <option value="1">Client side</option>
-                            <option value="2">Admin side</option>
-                          </select>
-                          </div>
-                        </div>
-                      </form>
-                  </div>
-                <div class="modal-footer">
-                  <button href="#!" class="modal-close waves-effect waves-green  btn-flat">Close</button>
-                  <button href="#!" class="modal-close waves-effect waves-green green btn-small">Add</button>
-          </div>
+    var elem = document.querySelector(".modal");
+    instance = M.Modal.init(elem, { dismissible: false });
+
+    return () => {
+      reset({}, { keepDefaultValues: true });
+
+      instance.destroy();
+    };
+  }, [instance]);
+
+  const onAddNewUser = (data) => {
+    data.isAdmin = data.isAdmin === "true" ? true : false;
+
+    console.log(data);
+
+    dispatch(addUser(data));
+  };
+
+  return (
+    <div>
+      <div id="modal1" className="modal">
+        <div className="modal-content">
+          <h4 className="center">Add User</h4>
+          <div className="divider" />
+
+          <form onSubmit={handleSubmit(onAddNewUser)} className="container">
+            <div className="row">
+              <div className="col s12 m6 input-field">
+                <input
+                  id="firstName"
+                  type="text"
+                  className="validate"
+                  {...register("firstName", { required: true })}
+                />
+                <label for="firstName">First Name</label>
+              </div>
+
+              <div className="col s12 m6 input-field">
+                <input
+                  id="lastName"
+                  type="text"
+                  className="validate"
+                  {...register("lastName", { required: true })}
+                />
+                <label for="lastName">Last Name</label>
+              </div>
+            </div>
+
+            <div className="row">
+              <p className="col s12 m6">Account Type: </p>
+              <p className="col s12 m3">
+                <label>
+                  <input
+                    className="with-gap"
+                    name="group1"
+                    value={false}
+                    type="radio"
+                    {...register("isAdmin")}
+                  />
+                  <span>Client</span>
+                </label>
+              </p>
+              <p className="col s12 m3">
+                <label>
+                  <input
+                    className="with-gap"
+                    name="group1"
+                    value={true}
+                    type="radio"
+                    {...register("isAdmin")}
+                  />
+                  <span>Admin</span>
+                </label>
+              </p>
+            </div>
+
+            <div className="row">
+              <div className="col s12 input-field">
+                <input
+                  id="email"
+                  type="email"
+                  className="validate"
+                  {...register("email", { required: true })}
+                />
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12 input-field">
+                <input
+                  id="password"
+                  type="password"
+                  className="validate"
+                  {...register("password", { required: true })}
+                />
+                <label for="password">Password</label>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="modal-close waves-effect waves-green  btn-flat">
+                Close
+              </button>
+              <button
+                className="waves-effect waves-green green btn-small"
+                type="submit"
+              >
+                Add
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default AddNewUserModal;
