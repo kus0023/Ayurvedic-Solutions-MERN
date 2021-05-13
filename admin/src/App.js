@@ -1,6 +1,5 @@
 import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import AddProduct from "./components/addproduct/AddProduct";
 import Base from "./components/addproduct/Base";
 import Auth from "./components/authentication/Auth";
 import Home from "./components/home/Home";
