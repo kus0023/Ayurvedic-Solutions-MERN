@@ -4,12 +4,31 @@ const Product = require("../../models/Product");
 
 const router = require("express").Router();
 
-router.get("/get", Pagination(Cart, {}, {}, {}, "product"), (req, res) => {
-  res.status(200).json({
-    pagination: req.pagination,
-    cart: req.results,
-  });
-});
+router.get(
+  "/get",
+  Pagination(Cart, {}, {}, {}, "product"),
+  async (req, res) => {
+    try {
+      //deleting non existing product's cart reference
+      for (item in req.results) {
+        if (item.product === null) {
+          await Cart.deleteOne({ _id: item._id });
+        }
+      }
+
+      //result cleanup
+      const result = req.results.filter((item) => item.product !== null);
+
+      res.status(200).json({
+        pagination: req.pagination,
+        cart: result,
+      });
+    } catch (e) {
+      console.log(e);
+      return res.sendStatus(500);
+    }
+  }
+);
 
 router.post("/add", (req, res) => {
   const { productId } = req.body;
