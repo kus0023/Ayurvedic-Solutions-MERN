@@ -15,11 +15,17 @@ function Home(props) {
     useEffect(async () => {
          await dispatch(getAuth());
         },
-     []);
+     [dispatch]);
 
      if(!auth.isReady){
          return <h1>Loading...</h1>
      }
+
+     if(!auth.user){
+         history.push('/login')
+     }
+
+     console.log(Cmp);
 
     
     return (

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import AddNewProductModal from "../Modals/AddNewProductModal";
 import Product from "./Product";
 
@@ -25,15 +26,15 @@ data && data.map((item, i)=> <Product key={i} data={item} />)
 
         {/* Floating add button to add new product */}
         <div class="fixed-action-btn">
-          <a
-            href="#modal-product-add"
+          <Link
+            to="/products/add"
             class="btn-floating btn-large red modal-trigger"
           >
             <i class="large material-icons">add</i>
-          </a>
+          </Link>
         </div>
 
-        <AddNewProductModal />
+        
       </div>
     );
   }
