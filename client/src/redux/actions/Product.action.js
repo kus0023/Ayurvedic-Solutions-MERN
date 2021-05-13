@@ -3,7 +3,12 @@ import {
   GET_PRODUCT_LIST,
   SET_LOADING_TRUE,
   SET_LOADING_FALSE,
+  SET_ONE_PRODUCT,
 } from "../types/Product.types";
+
+function setOneProduct(product) {
+  return { type: SET_ONE_PRODUCT, payload: product };
+}
 
 /**
  *
@@ -23,6 +28,19 @@ export const getProducts = (page, limit) => async (dispatch) => {
     });
   } catch (e) {
     console.log(e);
+  } finally {
+    dispatch(setItemsLoaded());
+  }
+};
+
+export const getOneProduct = (id) => async (dispatch) => {
+  dispatch(setItemsLoading());
+
+  try {
+    const res = await axios.get("/api/products/get?id=" + id);
+    dispatch(setOneProduct({ ...res.data.product }));
+  } catch (e) {
+    console.log(e.response || e.message || e);
   } finally {
     dispatch(setItemsLoaded());
   }
