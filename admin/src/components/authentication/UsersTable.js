@@ -1,44 +1,47 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserList } from "../../redux/dashboard/AuthenticationAction";
 
-class UsersTable extends Component {
-  render() {
-    return (
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>UID</th>
-              <th>User Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
+function UsersTable() {
+  const authenticationPage = useSelector((state) => state.authenticationPage);
+  const dispatch = useDispatch();
 
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Eclair</td>
-              <td>Eclair@gmail.com</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jellybean</td>
-              <td>Jellybean@gmail.com</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Jonathan</td>
-              <td>Jonathan@gmail.com</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Marry</td>
-              <td>marry@gmail.com</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+  useEffect(() => {
+    dispatch(fetchUserList());
+    return () => {};
+  }, [dispatch]);
+
+  console.log(authenticationPage);
+
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>UID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {authenticationPage.isloading ? (
+            <h1>Loading...</h1>
+          ) : (
+            authenticationPage.userList.map((user, i) => (
+              <tr key={i}>
+                <td>{user._id}</td>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
+                <td>{user.email}</td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default UsersTable;
