@@ -28,7 +28,7 @@ router.get("/get", async (req, res) => {
   const projection = { createdBy: 0, modifyBy: 0, modifyAt: 0 };
   try {
     if (id) {
-      const doc = await Disease.findById(id, projection);
+      const doc = await Disease.findById(id, projection).populate("remedies");
       if (!doc) {
         return res.status(400).json({
           message: "Id is not correct.",
@@ -42,6 +42,7 @@ router.get("/get", async (req, res) => {
     const docs = await Disease.find({}, projection, {
       sort: { createdAt: -1 },
     }).populate("remedies");
+    console.log(docs);
     return res.status(200).json({
       diseases: docs,
     });
