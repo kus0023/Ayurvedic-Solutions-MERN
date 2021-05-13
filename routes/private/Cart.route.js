@@ -5,7 +5,6 @@ const Product = require("../../models/Product");
 const router = require("express").Router();
 
 router.get("/get", Pagination(Cart, {}, {}, {}, "product"), (req, res) => {
-  console.log(req.pagination);
   res.status(200).json({
     pagination: req.pagination,
     cart: req.results,

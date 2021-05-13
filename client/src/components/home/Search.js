@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./css/Search.css";
 import { useForm } from "react-hook-form";
@@ -14,18 +14,32 @@ function Search() {
     handleSubmit(submitForm)();
   };
   const submitForm = async (data) => {
-    await dispatch(fetchData(data.type, data.search));
+    const search = data.search.trim();
+    await dispatch(fetchData(data.type, search));
   };
+
+  useEffect(() => {
+    var elem = document.querySelector("select");
+    var instance = window.M.FormSelect.init(elem, {});
+
+    return () => {
+      instance.destroy();
+    };
+  }, []);
+
   return (
     <div className="container search-page">
       <CSSTransition appear={true} in={true} timeout={1000} classNames="search">
-        <form onSubmit={handleSubmit(submitForm)}>
-          <div className="row">
-            <div className="col m4">
-              <label>Select For Search</label>
+        <form
+          className="search-form z-depth-3 "
+          onSubmit={handleSubmit(submitForm)}
+        >
+          <div className="row valign-wrapper">
+            <div className="col s4 m3">
+              {/* <label>{"_"} </label> */}
               <select
+                className="my-select "
                 defaultValue="product"
-                className="browser-default"
                 {...register("type")}
                 onChange={onChangeHandler}
               >
@@ -33,18 +47,21 @@ function Search() {
                 <option value="disease">Disease</option>
               </select>
             </div>
-            <div className="input-field col s8 ">
-              <input
-                id="search"
-                placeholder="Search"
-                type="text"
-                className="validate"
-                minLength={2}
-                name="search"
-                {...register("search")}
-                onChange={onChangeHandler}
-              />
-              <label htmlFor="search"></label>
+
+            <div className="col s8 m9">
+              <div className="input-field  ">
+                <input
+                  id="search"
+                  placeholder="Search"
+                  type="text"
+                  className="validate"
+                  minLength={2}
+                  name="search"
+                  {...register("search")}
+                  onChange={onChangeHandler}
+                />
+                <label htmlFor="search"></label>
+              </div>
             </div>
           </div>
         </form>

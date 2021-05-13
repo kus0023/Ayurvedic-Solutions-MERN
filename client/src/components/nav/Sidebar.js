@@ -21,11 +21,11 @@ class Sidebar extends React.Component {
     const { user } = this.props;
     return (
       <>
-        <ul id="slide-out" className="sidenav orange lighten-5">
+        <ul id="slide-out" className="sidenav orange lighten-5 sidenav-close">
           {user && (
             <li>
               <div className="user-view">
-                <div className="background  orange darken-4"></div>
+                <div className="background  amber darken-3"></div>
                 <a href="#user">
                   <img
                     className="circle"

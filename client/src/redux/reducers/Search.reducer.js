@@ -4,6 +4,7 @@ const initialState = {
   isLoading: false,
   type: "product",
   list: [],
+  query: "",
 };
 
 export default function SearchReducer(state = initialState, action) {
@@ -39,6 +40,12 @@ export default function SearchReducer(state = initialState, action) {
       return {
         ...state,
         list: [...[]],
+      };
+
+    case searchTypes.SET_QUERY_SEARCH:
+      return {
+        ...state,
+        query: action.payload,
       };
 
     default:

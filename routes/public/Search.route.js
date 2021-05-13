@@ -14,6 +14,8 @@ router.get("/product", async (req, res) => {
 
     const options = {
       keys: ["name", "description"],
+      shouldSort: true,
+      minMatchCharLength: 2,
     };
 
     const fuse = new Fuse(list, options);
@@ -40,6 +42,8 @@ router.get("/disease", async (req, res) => {
 
     const options = {
       keys: ["name", "commonNames", "description", "symptoms", "causes"],
+      shouldSort: true,
+      minMatchCharLength: 2,
     };
 
     const fuse = new Fuse(list, options);
