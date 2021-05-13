@@ -24,7 +24,10 @@ export default function ProductReducer(state = initialState, action) {
     case GET_PRODUCT_LIST:
       return {
         ...state,
-        result: action.payload,
+        result: {
+          ...action.payload,
+          products: [...[], ...action.payload.products],
+        },
       };
 
     default:
