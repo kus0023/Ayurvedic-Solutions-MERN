@@ -23,8 +23,8 @@ router.get("/", Pagination(Product), (req, res) => {
  * @route /api/products/productId/:id
  * Get only one product of matching productId = {id}
  */
-router.get("/productId/:id", (req, res) => {
-  const productId = req.params.id;
+router.get("/get", (req, res) => {
+  const productId = req.query.id;
   Product.findById(productId, null, null, (err, doc) => {
     if (err) {
       console.log(err.message);
