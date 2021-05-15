@@ -11,7 +11,7 @@ function UsersTable() {
     return () => {};
   }, [dispatch]);
 
-  console.log(authenticationPage);
+  
 
   return (
     <div>

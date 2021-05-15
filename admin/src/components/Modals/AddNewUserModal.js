@@ -26,7 +26,7 @@ function AddNewUserModal() {
     instance = M.Modal.init(elem, { dismissible: false });
 
     return () => {
-      reset({}, { keepDefaultValues: true });
+      
 
       instance.destroy();
     };
@@ -38,6 +38,8 @@ function AddNewUserModal() {
     console.log(data);
 
     dispatch(addUser(data));
+    reset({}, { keepDefaultValues: true,  });
+    instance.close();
   };
 
   return (

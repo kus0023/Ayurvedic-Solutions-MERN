@@ -119,6 +119,7 @@ export const addUser = (user) => async (dispatch) => {
     const res = await axios.post("/api/admin/register", user, config);
     console.log("ADDING USER DATA ==>", res.data);
     window.M.toast({ html: "User added", classes: "green", duration: 10000 });
+    dispatch(user.isAdmin ? fetchAdminList(): fetchUserList())
   } catch (e) {
     console.log(e.response?.data || e.message || e);
     window.M.toast({

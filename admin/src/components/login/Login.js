@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Login.css";
 import { useHistory } from 'react-router-dom'
-import { login } from "../../redux/index";
+import { getAuth, login } from "../../redux/index";
 import { useDispatch,useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 
@@ -15,6 +15,12 @@ function Login() {
   const dispatch=useDispatch();
   const auth=useSelector((state) => state.auth);
   const history=useHistory();
+
+  useEffect(() => {
+        dispatch(getAuth())
+    return () => {
+    }
+  }, [dispatch])
 
   
 

@@ -27,55 +27,6 @@ function MyGridView({ data, column, children }) {
     </>
   );
 
-  //   let totalRow = Math.floor(data.length / column);
-  //   let remainingElemets = data.length % column;
-
-  //   //styling
-  //   let colWidth = Math.round(12 / column);
-  //   let colClass = "center col s12 m" + colWidth;
-
-  //   let grid = [];
-  //   let indexCount = 0;
-  //   for (let row = 0; row < totalRow; row += 1) {
-  //     let rowItem = [];
-  //     for (let col = 0; col < column; col += 1) {
-  //       let colItem = (
-  //         <div className={colClass}>
-  //           {React.cloneElement(children, {
-  //             data: data[indexCount],
-  //             key: indexCount,
-  //           })}
-  //         </div>
-  //       );
-
-  //       rowItem.push(colItem);
-  //       indexCount += 1;
-  //     }
-
-  //     grid.push(<div className="row">{rowItem.map((e) => e)}</div>);
-  //   }
-
-  //   if (remainingElemets !== 0) {
-  //     colWidth = Math.round(12 / remainingElemets);
-  //     colClass = "center col s12 m" + colWidth;
-  //     let rowItem = [];
-  //     for (let col = 0; col < remainingElemets; col += 1) {
-  //       let colItem = (
-  //         <div className={colClass}>
-  //           <component key={indexCount} data={data[indexCount]} />
-  //         </div>
-  //       );
-
-  //       rowItem.push([colItem]);
-  //       indexCount += 1;
-  //     }
-
-  //     grid.push([<div className="row">{rowItem.map((e) => e)}</div>]);
-  //   }
-
-  //   console.log(grid);
-
-  //   return <>{grid.map((e) => e)}</>;
 }
 
 MyGridView.defaultProps = {
