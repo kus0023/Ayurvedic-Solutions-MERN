@@ -6,7 +6,7 @@ import { fetchCartItems } from "../../redux/actions/Cart.action";
 class AuthProvider extends Component {
   componentDidMount() {
     this.props.getAuth();
-    this.props.getCart(); //this can cause problems
+    this.props.getCart();
   }
 
   render() {
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAuth: () => dispatch(getAuth()),
+    getAuth: async () => dispatch(await getAuth()),
     getCart: () => {
       dispatch(fetchCartItems());
     },
