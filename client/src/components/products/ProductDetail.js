@@ -34,13 +34,13 @@ function ProductDetail() {
             <div className="col s12 m4">
               <img
                 className="responsive-img"
-                alt={productState.productDetail.name}
-                src={productState.productDetail.image}
+                alt={productState.productDetail?.name}
+                src={productState.productDetail?.image}
               />
             </div>
 
             <div className="col s12 m8">
-              <h2>{productState.productDetail.name}</h2>
+              <h2>{productState.productDetail?.name}</h2>
               <div className="divider"></div>
               <p>
                 Also Knows as: <b>common names</b>
@@ -73,19 +73,19 @@ function ProductDetail() {
           <div id="description" className="section scrollspy">
             <h3>Description</h3>
             <div className="divider"></div>
-            <p>{productState.productDetail.description}</p>
+            <p>{productState.productDetail?.description}</p>
           </div>
 
           <div id="benefits" className="section scrollspy">
             <h3>Benefits</h3>
             <div className="divider"></div>
-            <p>{productState.productDetail.benefits}</p>
+            <p>{productState.productDetail?.benefits}</p>
           </div>
 
           <div id="doses" className="section scrollspy">
             <h3>Doses</h3>
             <div className="divider"></div>
-            <p>{productState.productDetail.doses}</p>
+            <p>{productState.productDetail?.doses}</p>
           </div>
 
           <div id="empty-space"></div>
