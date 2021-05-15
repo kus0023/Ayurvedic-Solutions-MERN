@@ -109,9 +109,10 @@ export const getAuth = () => async (dispatch) => {
   //     .catch(err => console.error(err));
   try {
     if (token) {
-      const res = await axios.get("api/user/getAuth", config);
+      const res = await axios.get("/api/user/getAuth", config);
 
       const { user } = res.data;
+      console.log(res.data);
       dispatch(setUser(user));
     } else {
       throw new Error("SESSION EXPIRED");
