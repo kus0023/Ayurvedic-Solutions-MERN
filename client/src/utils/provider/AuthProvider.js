@@ -6,7 +6,12 @@ import { fetchCartItems } from "../../redux/actions/Cart.action";
 class AuthProvider extends Component {
   componentDidMount() {
     this.props.getAuth();
-    this.props.getCart();
+  }
+
+  componentDidUpdate() {
+    if (this.props.isReady) {
+      this.props.getCart();
+    }
   }
 
   render() {
