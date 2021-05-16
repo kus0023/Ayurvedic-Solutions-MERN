@@ -1,4 +1,4 @@
-export const SET_LOADING_TRUE = "SET_LOADING_TRUE";
-export const SET_LOADING_FALSE = "SET_LOADING_FALSE";
+export const SET_LOADING_TRUE = "SET_Disease_LOADING_TRUE";
+export const SET_LOADING_FALSE = "SET_Disease_LOADING_FALSE";
 
 export const GET_DISEASE_LIST = "GET_DISEASE_LIST";
