@@ -11,6 +11,11 @@ function ProductDetail() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  useEffect(() => {
+    dispatch(getOneProduct(id));
+    return () => {};
+  }, [dispatch, id]);
+
   let scrollspyInstance = useRef(null);
   useEffect(() => {
     const elem = document.querySelector(".scrollspy");
@@ -19,12 +24,12 @@ function ProductDetail() {
       offset: 0,
     });
 
-    dispatch(getOneProduct(id));
+    // dispatch(getOneProduct(id));
 
     return () => {
       scrollspyInstance.current.destroy();
     };
-  }, [scrollspyInstance, dispatch, id]);
+  }, [scrollspyInstance]);
 
   return productState.isLoading ? (
     <h1 className="center">Loading...</h1>

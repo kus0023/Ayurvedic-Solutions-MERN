@@ -11,7 +11,9 @@ class AddToCartButton extends Component {
     this.props.getDetail(this.props.productId);
   }
   render() {
-    // console.log(this.props.state);
+    if (this.props.isLoading) {
+      return <div>loading</div>;
+    }
     if (!this.props.isLoggedIn) {
       return (
         <div>
@@ -35,6 +37,7 @@ class AddToCartButton extends Component {
           className="btn orange waves-effect"
           onClick={() => {
             this.props.addCartItem(this.props.productId);
+            this.props.getDetail(this.props.productId);
           }}
         >
           <i className="material-icons right">add</i> Add to Cart
