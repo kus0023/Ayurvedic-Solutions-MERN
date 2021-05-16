@@ -13,8 +13,8 @@ function ProductItem({ product }) {
         <img src={product.image} alt={product.name} className="circle" />
         <span className="title">{product.name}</span>
         <p>{product.description}</p>
-        <p datatype="link" className="secondary-content">
-          {/* <i className="material-icons">grade</i> */}createdAt
+        <p datatype="link" className="secondary-content grey-text">
+          {new Date(product.createdAt).toDateString()}
         </p>
       </Link>
     </>

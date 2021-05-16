@@ -13,8 +13,9 @@ function CartItem({ item, handleDelete }) {
         />
       </div>
       <Link to={`/product/${product._id}`}>
-        <div className="col s8 m8">
+        <div className="col s8 m8 black-text">
           <h6 className="truncate">{product.name}</h6>
+          <p>Add date: {new Date(item.createdAt).toDateString()}</p>
         </div>
       </Link>
 

@@ -7,11 +7,11 @@ function SearchResultItem({ item }) {
   return (
     <>
       <Link to={`${searchState.type}/${item._id}`} className="collection-item ">
-        <span className="title">{item.name}</span>
-        <p>{item.description}</p>
-        <p datatype="link" className="secondary-content">
+        <h4 className="black-text">{item.name}</h4>
+        <p className="grey-text">{item.description}</p>
+        {/* <p datatype="link" className="secondary-content">
           {item.createdAt}
-        </p>
+        </p> */}
       </Link>
     </>
   );
