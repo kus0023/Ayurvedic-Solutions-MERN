@@ -33,11 +33,19 @@ export const getProducts = (page, limit) => async (dispatch) => {
   }
 };
 
-export const getOneProduct = (id) => async (dispatch) => {
+export const getOneProduct = (id) => async (dispatch, getState) => {
   dispatch(setItemsLoading());
+  const cartState = getState().cartState;
 
   try {
     const res = await axios.get("/api/products/get?id=" + id);
+    const indexOfCart = cartState.list.findIndex(
+      (item) => item.product._id === id
+    );
+
+    //extra cart info added
+    res.data.product.isPresentInCart = indexOfCart > -1;
+
     dispatch(setOneProduct({ ...res.data.product }));
   } catch (e) {
     console.log(e.response || e.message || e);

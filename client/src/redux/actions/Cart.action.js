@@ -1,5 +1,8 @@
 import axios from "axios";
-import { errorMessage } from "../../utils/messages/ToastMessages";
+import {
+  errorMessage,
+  successMessage,
+} from "../../utils/messages/ToastMessages";
 import * as cartTypes from "../types/Cart.types";
 
 const setItemsLoading = (isLoading) => {
@@ -49,6 +52,30 @@ export const fetchCartItems = () => (dispatch) => {
       dispatch(setItemsLoading(false));
     });
 };
+
+export const addCartItem = (productId) => async (dispatch) => {
+  dispatch(setItemsLoading(true));
+
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+
+  const data = {
+    productId,
+  };
+
+  try {
+    await axios.post("/api/cart/add", data, config);
+    dispatch(fetchCartItems());
+    successMessage("Item Added", 5000);
+  } catch (e) {
+    console.log(e.response?.data?.message || e.response?.data || e);
+  }
+};
+
 export const deleteCartItem = (cartId) => (dispatch) => {
   dispatch(setItemsLoading(true));
   const token = localStorage.getItem("token");

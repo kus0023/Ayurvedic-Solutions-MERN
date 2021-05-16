@@ -35,7 +35,10 @@ export default function ProductReducer(state = initialState, action) {
     case SET_ONE_PRODUCT:
       return {
         ...state,
-        productDetail: action.payload,
+        productDetail: {
+          ...state.productDetail,
+          ...action.payload,
+        },
       };
 
     default:

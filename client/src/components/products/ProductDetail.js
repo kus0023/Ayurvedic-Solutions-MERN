@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getOneProduct } from "../../redux/actions/Product.action";
 import "./css/ProductDetail.css";
+import AddToCartButton from "./AddToCartButton";
 
 function ProductDetail() {
   const productState = useSelector((state) => state.productState);
+
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -40,20 +42,19 @@ function ProductDetail() {
             </div>
 
             <div className="col s12 m8">
-              <h2>{productState.productDetail?.name}</h2>
+              <h4>{productState.productDetail?.name}</h4>
               <div className="divider"></div>
               <p>
                 Also Knows as: <b>common names</b>
               </p>
               <div>
-                <button className="btn-large orange waves-effect">
-                  <i className="material-icons right">add</i> Save
-                </button>
+                <AddToCartButton productId={id} />
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="divider" />
 
       <div className="row">
         <div className="col hide-on-small-only m3 l2">
