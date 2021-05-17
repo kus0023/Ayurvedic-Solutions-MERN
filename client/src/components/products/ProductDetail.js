@@ -91,7 +91,7 @@ function ProductDetail() {
           <div id="doses" className="section scrollspy">
             <h3>Doses</h3>
             <div className="divider"></div>
-            <p>{productState.productDetail?.doses}</p>
+            <p>{productState.productDetail?.dose}</p>
           </div>
 
           <div id="empty-space"></div>
