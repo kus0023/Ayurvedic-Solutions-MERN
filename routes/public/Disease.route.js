@@ -51,6 +51,17 @@ router.get("/get", async (req, res) => {
   }
 });
 
+router.get("/names", async (req, res) => {
+  const doc = await Disease.find({}, { name: 1, _id: 0 });
+  if (doc) {
+    const data = [];
+    doc.forEach((e) => data.push(e.name));
+    return res.json(data);
+  } else {
+    return res.json([]);
+  }
+});
+
 router.use(
   "/",
   verifySession(),
