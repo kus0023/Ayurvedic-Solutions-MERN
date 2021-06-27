@@ -3,17 +3,15 @@ import AdminTable from "./AdminTable";
 import UsersTable from "./UsersTable";
 import "./Auth.css";
 import AddNewUserModal from "../Modals/AddNewUserModal";
-import { Redirect } from "react-router-dom";
 
 export default class Auth extends Component {
-
   // constructor(props){
   //   super(props)
   //   const token=localStorage.getItem("token")
-    
+
   //   let loggedIn=true
   //   if(token==null){
-      
+
   //     loggedIn=false
   //   }
 
@@ -22,20 +20,15 @@ export default class Auth extends Component {
   //   }
   // }
 
-  
-
-
   componentDidMount() {
     const M = window.M;
     const el = document.querySelector(".tabs");
     M.Tabs.init(el, { swipeable: true });
     // const instance = M.Tabs.getInstance(el);
     // instance.select("test-swipe-1");
-    
   }
 
   render() {
-    
     return (
       <>
         <div
@@ -63,7 +56,7 @@ export default class Auth extends Component {
               </button>
             </li>
           </ul>
-    
+
           <div id="test-swipe-1" className="col s12 ">
             <UsersTable />
           </div>

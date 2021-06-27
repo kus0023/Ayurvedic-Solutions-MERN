@@ -5,6 +5,7 @@ function MyGridView({ data, column, children }) {
   const rows = Math.ceil(data.length / column);
   const newList = [];
   for (let i = 0; i < rows; i++) {
+    //eslint-disable-next-line
     newList[i] = new Array();
     for (let j = 0; j < column; j++) {
       if (data[column * i + j]) newList[i].push(data[column * i + j]);
@@ -12,7 +13,6 @@ function MyGridView({ data, column, children }) {
   }
 
   console.log(newList, rows);
-
   return (
     <>
       {newList.map((row, r) => (
@@ -26,7 +26,6 @@ function MyGridView({ data, column, children }) {
       ))}
     </>
   );
-
 }
 
 MyGridView.defaultProps = {

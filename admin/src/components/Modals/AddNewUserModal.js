@@ -1,11 +1,11 @@
-import React, { Component, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
 import { addUser } from "../../redux/dashboard/AuthenticationAction";
 
 function AddNewUserModal() {
-  const isLoading = useSelector((state) => state.authenticationPage);
+  // const isLoading = useSelector((state) => state.authenticationPage);
 
   const dispatch = useDispatch();
 
@@ -19,15 +19,13 @@ function AddNewUserModal() {
     },
   });
 
-  let instance = null;
+  let instance = useRef(null);
   useEffect(() => {
     const M = window.M;
     var elem = document.querySelector(".modal");
-    instance = M.Modal.init(elem, { dismissible: false });
+    instance.current = M.Modal.init(elem, { dismissible: false });
 
     return () => {
-      
-
       instance.destroy();
     };
   }, [instance]);
@@ -38,7 +36,7 @@ function AddNewUserModal() {
     console.log(data);
 
     dispatch(addUser(data));
-    reset({}, { keepDefaultValues: true,  });
+    reset({}, { keepDefaultValues: true });
     instance.close();
   };
 

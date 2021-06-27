@@ -10,7 +10,10 @@ const initialState = {
   },
 };
 
-export default (state = initialState, { type, payload }) => {
+export default function AuthenticateReducer(
+  state = initialState,
+  { type, payload }
+) {
   switch (type) {
     case authenticationType.SET_LOADING_TRUE:
       return { ...state, isLoading: true };
@@ -56,4 +59,4 @@ export default (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-};
+}

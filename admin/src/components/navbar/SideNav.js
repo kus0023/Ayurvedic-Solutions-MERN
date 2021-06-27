@@ -5,7 +5,7 @@ function SideNav() {
   useEffect(() => {
     const M = window.M;
     const elems = document.querySelectorAll(".sidenav");
-    const instances = M.Sidenav.init(elems, {});
+    M.Sidenav.init(elems, {});
 
     return () => {
       const elem = document.querySelectorAll(".sidenav")[0];
@@ -45,6 +45,11 @@ function SideNav() {
         <li>
           <Link to="/products">
             <i className="material-icons">category</i>Products
+          </Link>
+        </li>
+        <li>
+          <Link to="/diseases">
+            <i className="material-icons">volunteer_activism</i>Diseases
           </Link>
         </li>
       </ul>
