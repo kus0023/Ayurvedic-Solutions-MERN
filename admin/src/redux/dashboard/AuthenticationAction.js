@@ -51,12 +51,12 @@ export const fetchAdminList = () => (dispatch) => {
     },
   };
 
-  console.log(config.headers.Authorization);
+  // console.log(config.headers.Authorization);
   axios
     .get("/api/admin/admins", config)
 
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(setAdminList(res.data.admins));
     })
     .catch((err) => {
@@ -81,16 +81,16 @@ export const fetchUserList = () => (dispatch) => {
     },
   };
 
-  console.log(config.headers.Authorization);
+  // console.log(config.headers.Authorization);
   axios
     .get("/api/admin/users", config)
 
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(setUserList(res.data.users));
     })
     .catch((err) => {
-      console.error(err.response);
+      // console.error(err.response);
       dispatch(
         setUserListError(
           err.message || err.response?.data?.message || "USER FETCH ERROR"
@@ -106,9 +106,7 @@ export const addUser = (user) => async (dispatch) => {
   dispatch(setLoading(true));
 
   const token = localStorage.getItem("token");
-  console.log(
-    token + "-------------------------------------------------------------"
-  );
+
   const config = {
     headers: {
       Authorization: "Bearer " + token,
@@ -116,12 +114,12 @@ export const addUser = (user) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post("/api/admin/register", user, config);
-    console.log("ADDING USER DATA ==>", res.data);
+    await axios.post("/api/admin/register", user, config);
+    // console.log("ADDING USER DATA ==>", res.data);
     window.M.toast({ html: "User added", classes: "green", duration: 10000 });
-    dispatch(user.isAdmin ? fetchAdminList(): fetchUserList())
+    dispatch(user.isAdmin ? fetchAdminList() : fetchUserList());
   } catch (e) {
-    console.log(e.response?.data || e.message || e);
+    // console.log(e.response?.data || e.message || e);
     window.M.toast({
       html: "Adding user failed",
       classes: "red",

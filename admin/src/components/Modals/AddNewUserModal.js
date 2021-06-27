@@ -26,14 +26,14 @@ function AddNewUserModal() {
     instance.current = M.Modal.init(elem, { dismissible: false });
 
     return () => {
-      instance.destroy();
+      instance.current.destroy();
     };
   }, [instance]);
 
   const onAddNewUser = (data) => {
     data.isAdmin = data.isAdmin === "true" ? true : false;
 
-    console.log(data);
+    // console.log(data);
 
     dispatch(addUser(data));
     reset({}, { keepDefaultValues: true });
@@ -56,7 +56,7 @@ function AddNewUserModal() {
                   className="validate"
                   {...register("firstName", { required: true })}
                 />
-                <label for="firstName">First Name</label>
+                <label htmlFor="firstName">First Name</label>
               </div>
 
               <div className="col s12 m6 input-field">
@@ -66,7 +66,7 @@ function AddNewUserModal() {
                   className="validate"
                   {...register("lastName", { required: true })}
                 />
-                <label for="lastName">Last Name</label>
+                <label htmlFor="lastName">Last Name</label>
               </div>
             </div>
 
@@ -106,7 +106,7 @@ function AddNewUserModal() {
                   className="validate"
                   {...register("email", { required: true })}
                 />
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
               </div>
             </div>
             <div className="row">
@@ -117,7 +117,7 @@ function AddNewUserModal() {
                   className="validate"
                   {...register("password", { required: true })}
                 />
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
               </div>
             </div>
 

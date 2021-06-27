@@ -13,7 +13,6 @@ function DiseaseList() {
     dispatch(getDisease());
     return () => {};
   }, [dispatch]);
-  console.log(diseaseState);
 
   return (
     <div className="container">

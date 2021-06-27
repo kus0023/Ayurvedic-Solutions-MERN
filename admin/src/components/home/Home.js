@@ -24,8 +24,6 @@ function Home(props) {
     history.push("/login");
   }
 
-  console.log(Cmp);
-
   return (
     <div>
       <Cmp />

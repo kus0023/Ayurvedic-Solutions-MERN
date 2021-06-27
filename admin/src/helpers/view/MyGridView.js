@@ -12,7 +12,6 @@ function MyGridView({ data, column, children }) {
     }
   }
 
-  console.log(newList, rows);
   return (
     <>
       {newList.map((row, r) => (

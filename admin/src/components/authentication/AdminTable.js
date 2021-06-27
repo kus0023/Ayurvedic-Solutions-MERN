@@ -11,8 +11,6 @@ function AdminTable() {
     return () => {};
   }, [dispatch]);
 
-  console.log(authenticationPage);
-
   return (
     <div>
       <table>

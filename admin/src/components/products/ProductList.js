@@ -6,33 +6,33 @@ import Product from "./Product";
 
 class ProductList extends Component {
   render() {
-    const data =  this.props.data;
+    const data = this.props.data;
     return (
       <div>
-      
-        <div class="container">
-         <MyGridView data={data} column={3} >
-           <Product />
-         </MyGridView>
+        <div className="container">
+          <MyGridView data={data} column={3}>
+            <Product />
+          </MyGridView>
         </div>
 
         {/* Floating add button to add new product */}
-        <div class="fixed-action-btn">
+        <div className="fixed-action-btn">
           <Link
             to="/products/add"
-            class="btn-floating btn-large red modal-trigger">
-                <i class="large material-icons">add</i>
+            className="btn-floating btn-large red modal-trigger"
+          >
+            <i className="large material-icons">add</i>
           </Link>
-        </div> 
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps= state =>{
-  return{
-    data: state.product.items
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+    data: state.product.items,
+  };
+};
 
-export default connect (mapStateToProps)(ProductList);
+export default connect(mapStateToProps)(ProductList);
