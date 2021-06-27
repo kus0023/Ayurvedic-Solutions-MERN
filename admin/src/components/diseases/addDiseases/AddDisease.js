@@ -26,7 +26,9 @@ function AddDisease() {
             {...methods.register("name")}
             placeholder="Name of the Disease"
           />
-          <button className="white blue-text btn-flat">Check</button>
+          <button type="button" className="white blue-text btn-flat">
+            Check
+          </button>
 
           {isVisible && (
             <div>
