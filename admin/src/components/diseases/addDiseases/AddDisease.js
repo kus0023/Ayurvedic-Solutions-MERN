@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
+import DynamicInput from "./DynamicInput";
+
 function AddDisease() {
   const [isVisible, setIsVisible] = useState(true);
-  const { register, handleSubmit } = useForm();
+  const methods = useForm({
+    defaultValues: {},
+  });
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -10,34 +14,42 @@ function AddDisease() {
 
   const onSubmit = (data) => {
     console.log(data);
-    console.log(data);
     toggleVisibility();
   };
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <span>Name: </span>
-        <input {...register("name")} placeholder="Name of the Disease" />
-        <button className="white blue-text btn-flat">Check</button>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <span>Name: </span>
+          <input
+            {...methods.register("name")}
+            placeholder="Name of the Disease"
+          />
+          <button className="white blue-text btn-flat">Check</button>
 
-        {isVisible && (
-          <div>
-            <div className="input-field">
-              <textarea
-                id="description"
-                className="materialize-textarea"
-                {...register("description")}
-              ></textarea>
-              <label htmlFor="description">Description of the disease</label>
+          {isVisible && (
+            <div>
+              <div className="input-field">
+                <textarea
+                  id="description"
+                  className="materialize-textarea"
+                  {...methods.register("description")}
+                ></textarea>
+                <label htmlFor="description">Description of the disease</label>
+              </div>
+
+              <DynamicInput name="commonName" title="Common Name" />
+              <DynamicInput name="causes" title="Causes" />
+              <DynamicInput name="symptoms" title="Symptoms" />
+
+              <button type="submit" className="btn red">
+                Add Disease
+              </button>
             </div>
-
-            <button type="submit" className="btn red">
-              Add Disease{" "}
-            </button>
-          </div>
-        )}
-      </form>
+          )}
+        </form>
+      </FormProvider>
     </div>
   );
 }
