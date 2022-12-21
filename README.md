@@ -1,4 +1,12 @@
 # Ayurvedic-Solutions-MERN
+================================================================================
+
+**Visit my new project based on docker. It is very east to setup. (I personally reccomend that)**
+
+https://github.com/kus0023/Ayurvedic-Solutions-MERN-Containorized
+
+===============================================================================
+
 
 ### Add .env file
 
